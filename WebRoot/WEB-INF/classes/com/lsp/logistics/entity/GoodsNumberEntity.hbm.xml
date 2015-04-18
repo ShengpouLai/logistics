@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.lsp.logistics.entity.GoodsNumberEntity" table="t_goods_number">
+		<id name="id" type="java.lang.Integer">
+			<column name="id" />
+			<generator class="identity" />
+		</id>
+		<property name="totalQuantity" type="java.lang.Integer">
+			<column name="totalQuantity" />
+		</property>
+		<property name="returnQuantity" type="java.lang.Integer">
+			<column name="returnQuantity" />
+		</property>
+		<property name="canDistributeQuantity" type="java.lang.Integer">
+			<column name="canDistributeQuantity" />
+		</property>
+		<property name="cannotDistributeQuantity" type="java.lang.Integer">
+			<column name="cannotDistributeQuantity" />
+		</property>
+		<many-to-one name="goods" class="com.lsp.logistics.entity.GoodsEntity" column="goods" lazy="false"/>
+		<many-to-one name="storage" class="com.lsp.logistics.entity.StorageEntity" column="storage" lazy="false"/>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,65 @@
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<!-- 指定由Spring负责action对象的创建 -->
+	<constant name="struts.objectFactory" value="spring" />
+	<!-- 设置Struts2允许动态方法的调用 -->
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	
+	<package name="storage_invoicing" extends="json-default">
+		<action name="centralSBGList" class="com.lsp.logistics.web.action.storage.invoicing.StorageInvoicingManagerAction" method="centralSBGList">
+			<result name="centralSBGList">/WEB-INF/jsp/storage/invoicing/CentralStorageBuyGoodsList.jsp</result>
+		</action>
+		<action name="openCSPutIn" class="com.lsp.logistics.web.action.storage.invoicing.StorageInvoicingManagerAction" method="openCSPutIn">
+			<result name="openCSPutIn">/WEB-INF/jsp/storage/invoicing/CentralStoragePutIn.jsp</result>
+		</action>
+		<action name="centralStoragePutIn" class="com.lsp.logistics.web.action.storage.invoicing.StorageInvoicingManagerAction" method="centralStoragePutIn">
+			<result name="centralStoragePutIn" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
+		<action name="transferOrderList" class="com.lsp.logistics.web.action.storage.invoicing.StorageInvoicingManagerAction" method="transferOrderList">
+			<result name="transferOrderList">/WEB-INF/jsp/storage/invoicing/TransferOrderList.jsp</result>
+		</action>
+		<action name="transferGoods" class="com.lsp.logistics.web.action.storage.invoicing.StorageInvoicingManagerAction" method="transferGoods">
+			<result name="transferGoods" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
+		
+		<action name="substationStoragePutInList" class="com.lsp.logistics.web.action.storage.invoicing.StorageInvoicingManagerAction" method="substationStoragePutInList">
+			<result name="substationStoragePutInList">/WEB-INF/jsp/storage/invoicing/SubstationStoragePutInList.jsp</result>
+		</action>
+		<action name="substationStoragePutIn" class="com.lsp.logistics.web.action.storage.invoicing.StorageInvoicingManagerAction" method="substationStoragePutIn">
+			<result name="substationStoragePutIn" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
+		<action name="openSubstationStoragePutIn" class="com.lsp.logistics.web.action.storage.invoicing.StorageInvoicingManagerAction" method="openSubstationStoragePutIn">
+			<result name="openSubstationStoragePutIn">/WEB-INF/jsp/storage/invoicing/SubstationStoragePutIn.jsp</result>
+		</action>
+		<action name="substationStorageOutOfList" class="com.lsp.logistics.web.action.storage.invoicing.StorageInvoicingManagerAction" method="substationStorageOutOfList">
+			<result name="substationStorageOutOfList">/WEB-INF/jsp/storage/invoicing/SubstationStorageOutOfList.jsp</result>
+		</action>
+		<action name="substationStorageOutOf" class="com.lsp.logistics.web.action.storage.invoicing.StorageInvoicingManagerAction" method="substationStorageOutOf">
+			<result name="substationStorageOutOf" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
+		<action name="storageInvoicingList" class="com.lsp.logistics.web.action.storage.invoicing.StorageInvoicingManagerAction" method="storageInvoicingList">
+			<result name="storageInvoicingList">/WEB-INF/jsp/storage/invoicing/StorageInvoicingList.jsp</result>
+		</action>
+		<action name="invoicing_find" class="com.lsp.logistics.web.action.storage.invoicing.StorageInvoicingManagerAction" method="invoicing_find">
+			<result name="invoicing_find">/WEB-INF/jsp/storage/invoicing/StorageInvoicingList.jsp</result>
+		</action>
+		<action name="centralStoragePutInDetail" class="com.lsp.logistics.web.action.storage.invoicing.StorageInvoicingManagerAction" method="centralStoragePutInDetail">
+			<result name="centralStoragePutInDetail">/WEB-INF/jsp/storage/invoicing/CentralStoragePutInDetail.jsp</result>
+		</action>
+		<action name="centralStorageOutOfDetail" class="com.lsp.logistics.web.action.storage.invoicing.StorageInvoicingManagerAction" method="centralStorageOutOfDetail">
+			<result name="centralStorageOutOfDetail">/WEB-INF/jsp/storage/invoicing/CentralStorageOutOfDetail.jsp</result>
+		</action>
+		
+	</package>
+</struts>

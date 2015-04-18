@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.lsp.logistics.entity.StorageReserveEntity"
+		table="t_storage_reserve">
+		<id name="id" type="java.lang.Integer">
+			<column name="id" />
+			<generator class="identity" />
+		</id>
+		<property generated="never" lazy="false" name="storageWarningReserves"
+			type="java.lang.Integer">
+			<column name="storage_warning_reserves" />
+		</property>
+		<property generated="never" lazy="false" name="storageMaxReserves"
+			type="java.lang.Integer">
+			<column name="storage_max_reserves" />
+		</property>
+		<many-to-one class="com.lsp.logistics.entity.StorageEntity"
+			column="storage" lazy="false" name="storage" />
+		<many-to-one class="com.lsp.logistics.entity.GoodsEntity"
+			column="goods" lazy="false" name="goods" />
+	</class>
+</hibernate-mapping>

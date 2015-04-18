@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<!-- 指定由Spring负责action对象的创建 -->
+	<constant name="struts.objectFactory" value="spring" />
+	<!-- 设置Struts2允许动态方法的调用 -->
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	
+	<package name="substation" extends="json-default">
+		<action name="substationList" class="com.lsp.logistics.web.action.substation.SubstationAction" method="findAllSubstation">
+			<result name="findAllSubstation">/WEB-INF/jsp/substation/SubstationList.jsp</result>
+		 </action>
+		<action name="substationAdd" class="com.lsp.logistics.web.action.substation.SubstationAction" method="openAddSubstationPage">
+			<result name="openAddSubstationPage">/WEB-INF/jsp/substation/SubstationAdd.jsp</result>
+		</action>
+		<action name="substation_add" class="com.lsp.logistics.web.action.substation.SubstationAction" method="addSubstation">
+			<result name="addSubstation" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
+		<action name="substation_delete" class="com.lsp.logistics.web.action.substation.SubstationAction" method="deleteSubstation">
+			<result name="deleteSubstation" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
+		<action name="substation_findById" class="com.lsp.logistics.web.action.substation.SubstationAction" method="findSubstationById">
+			<result name="findSubstationById">/WEB-INF/jsp/substation/SubstationUpdate.jsp</result>
+		</action>
+		<action name="substation_update" class="com.lsp.logistics.web.action.substation.SubstationAction" method="updateSubstation">
+			<result name="updateSubstation" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
+		<action name="substation_find" class="com.lsp.logistics.web.action.substation.SubstationAction" method="findSubstation">
+			<result name="findSubstation">/WEB-INF/jsp/substation/SubstationList.jsp</result>
+		</action>
+		<action name="deliveryStaffList" class="com.lsp.logistics.web.action.substation.DeliveryStaffAction" method="deliveStaffList">
+			<result name="deliveStaffList">/WEB-INF/jsp/substation/DeliveryStaffList.jsp</result>
+		</action>
+		<action name="deliveryStaffAdd" class="com.lsp.logistics.web.action.substation.DeliveryStaffAction" method="deliveryStaffAdd">
+			<result name="deliveryStaffAdd">/WEB-INF/jsp/substation/DeliveryStaffAdd.jsp</result>
+		</action>
+		<action name="deliveryStaff_add" class="com.lsp.logistics.web.action.substation.DeliveryStaffAction" method="delivery_add">
+			<result name="delivery_add" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
+		<action name="deliveryStaff_findById" class="com.lsp.logistics.web.action.substation.DeliveryStaffAction" method="deliveryStaff_findById">
+			<result name="deliveryStaff_findById">/WEB-INF/jsp/substation/DeliveryStaffUpdate.jsp</result>
+		</action>
+		<action name="deliveryStaff_update" class="com.lsp.logistics.web.action.substation.DeliveryStaffAction" method="deliveryStaff_update">
+			<result name="deliveryStaff_update" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
+		<action name="deliveryStaff_delete" class="com.lsp.logistics.web.action.substation.DeliveryStaffAction" method="deliveryStaff_delete">
+			<result name="deliveryStaff_delete" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
+		<action name="deliveryStaff_find" class="com.lsp.logistics.web.action.substation.DeliveryStaffAction" method="deliveryStaff_find">
+			<result name="deliveryStaff_find">/WEB-INF/jsp/substation/DeliveryStaffList.jsp</result>
+		</action>
+		<action name="taskAllocationList" class="com.lsp.logistics.web.action.substation.SubstationAction" method="taskAllocationList">
+			<result name="taskAllocationList">/WEB-INF/jsp/substation/TaskAllocationList.jsp</result>
+		</action>
+		<action name="openTaskAllocation" class="com.lsp.logistics.web.action.substation.SubstationAction" method="openTaskAllocation">
+			<result name="openTaskAllocation">/WEB-INF/jsp/substation/TaskAllocation.jsp</result>
+		</action>
+		<action name="taskAllocation" class="com.lsp.logistics.web.action.substation.SubstationAction" method="taskAllocation">
+			<result name="taskAllocation" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
+		<action name="receiptEnterList" class="com.lsp.logistics.web.action.substation.SubstationAction" method="receiptEnterList">
+			<result name="receiptEnterList">/WEB-INF/jsp/substation/ReceiptEnterList.jsp</result>
+		</action>
+		<action name="receiptEnter" class="com.lsp.logistics.web.action.substation.SubstationAction" method="receiptEnter">
+			<result name="receiptEnter">/WEB-INF/jsp/substation/ReceiptEnter.jsp</result>
+		</action>
+		<action name="receipt_enter" class="com.lsp.logistics.web.action.substation.SubstationAction" method="receipt_enter">
+			<result name="receipt_enter" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
+		<action name="taskOrderList" class="com.lsp.logistics.web.action.substation.SubstationAction" method="taskOrderList">
+			<result name="taskOrderList">/WEB-INF/jsp/substation/TaskOrderList.jsp</result>
+		</action>
+		<action name="taskOrder_find" class="com.lsp.logistics.web.action.substation.SubstationAction" method="taskOrder_find">
+			<result name="taskOrder_find">/WEB-INF/jsp/substation/TaskOrderList.jsp</result>
+		</action>
+	</package>
+	
+</struts>

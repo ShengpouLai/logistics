@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.lsp.logistics.entity.OrderEntity" table="t_order">
+		<id name="id" type="java.lang.Integer">
+			<column name="id" />
+			<generator class="identity" />
+		</id>
+		<property name="orderId" type="java.lang.String">
+			<column name="order_id"></column>
+		</property>
+		<property name="orderMoney" type="java.lang.Double">
+			<column name="order_money"/>
+		</property>
+		<property name="orderRemark" type="java.lang.String">
+			<column name="order_remark"/>
+		</property>
+		<property name="orderDate" type="java.util.Date">
+			<column name="order_date"/>
+		</property>
+		<property name="orderDeliverDate" type="java.util.Date">
+			<column name="order_deliverDate"/>
+		</property>
+		<property name="orderType" type="java.lang.String">
+			<column name="order_type"/>
+		</property>
+		<property name="orderConsigneeName" type="java.lang.String">
+			<column name="order_consignee_name"></column>
+		</property>
+		<property name="orderConsigneeAddress" type="java.lang.String">
+			<column name="order_consignee_address"></column>
+		</property>
+		<property name="orderConsigneePhone" type="java.lang.String">
+			<column name="order_consignee_phone"></column>
+		</property>
+		<property name="orderConsigneePostcode" type="java.lang.String">
+			<column name="order_consignee_postcode"></column>
+		</property>
+		<property name="orderNeedInvoce" type="java.lang.String">
+			<column name="order_need_invoce"></column>
+		</property>
+		<property name="orderPayerName" type="java.lang.String">
+			<column name="order_payer_name"></column>
+		</property>
+		<property name="orderPayerAddress" type="java.lang.String">
+			<column name="order_payer_address"></column>
+		</property>
+		<property name="orderPayerPhone" type="java.lang.String">
+			<column name="order_payer_phone"></column>
+		</property>
+		<property name="orderPayerPostcode" type="java.lang.String">
+			<column name="order_payer_postcode"></column>
+		</property>
+		<property name="orderState" type="java.lang.String">
+			<column name="order_state"></column>
+		</property>
+		<many-to-one name="costomer"
+			class="com.lsp.logistics.entity.CostomerEntity" column="costomer"
+			lazy="false" />
+	</class>
+</hibernate-mapping>

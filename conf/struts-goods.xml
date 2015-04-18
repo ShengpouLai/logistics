@@ -1,0 +1,111 @@
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+	
+<struts>
+	<!-- 指定由Spring负责action对象的创建 -->
+	<constant name="struts.objectFactory" value="spring" />
+	<!-- 设置Struts2允许动态方法的调用 -->
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	
+	<package name="goods" extends="json-default">
+		<action name="firstGoodsAdd" class="com.lsp.logistics.web.action.ToPage" method="firstGoodsAddPage">
+			<result name="firstGoodsAdd">/WEB-INF/jsp/goods/FirstGoodsAdd.jsp</result>
+		</action>
+		<action name="firstGoodsList" class="com.lsp.logistics.web.action.goods.FirstGoodsAction" method="findAllFirstGoods">
+			<result name="firstGoodsFindAll">/WEB-INF/jsp/goods/FirstGoodsList.jsp</result>
+		</action>
+		<action name="firstGoods_add" class="com.lsp.logistics.web.action.goods.FirstGoodsAction" method="addFirstGoods">
+			<result type="json" name="add">
+				<param name="root">data</param>
+			</result>
+		</action>
+		<action name="firstGoods_delete" class="com.lsp.logistics.web.action.goods.FirstGoodsAction" method="deleteFirstGoods">
+			<result type="json" name="delete">
+				<param name="root">data</param>
+			</result>
+		</action>
+		<action name="firstGoods_findById" class="com.lsp.logistics.web.action.goods.FirstGoodsAction" method="findFirstGoodsById">
+			<result name="findById">/WEB-INF/jsp/goods/FirstGoodsUpdate.jsp</result>
+		</action>
+		<action name="firstGoods_update" class="com.lsp.logistics.web.action.goods.FirstGoodsAction" method="updateFirstGoods">
+			<result type="json" name="update">
+				<param name="root">data</param>
+			</result>
+		</action>
+		
+		
+		<action name="secondGoodsList" class="com.lsp.logistics.web.action.goods.SecondGoodsAction" method="findAllSecondGoods">
+			<result name="secondGoodsFindAll">/WEB-INF/jsp/goods/SecondGoodsList.jsp</result>
+		</action>
+		<action name="secondGoodsAdd" class="com.lsp.logistics.web.action.goods.SecondGoodsAction" method="findFirstGoods">
+			<result name="firstGoods">/WEB-INF/jsp/goods/SecondGoodsAdd.jsp</result>
+		</action>
+		<action name="secondGoods_add" class="com.lsp.logistics.web.action.goods.SecondGoodsAction" method="addSecondGoods">
+			<result type="json" name="add">
+				<param name="root">data</param>
+			</result>
+		</action>
+		<action name="secondGoods_delete" class="com.lsp.logistics.web.action.goods.SecondGoodsAction" method="deleteSecondGoods">
+			<result type="json" name="delete">
+				<param name="root">data</param>
+			</result>
+		</action>
+		<action name="secondGoods_findById" class="com.lsp.logistics.web.action.goods.SecondGoodsAction" method="findSecondGoodsById">
+			<result name="findById">/WEB-INF/jsp/goods/SecondGoodsUpdate.jsp</result>
+		</action>
+		<action name="secondGoods_update" class="com.lsp.logistics.web.action.goods.SecondGoodsAction" method="updateSecondGoods">
+			<result type="json" name="update">
+				<param name="root">data</param>
+			</result>
+		</action>
+		<action name="findSercondByFirstGoodsId" class="com.lsp.logistics.web.action.goods.SecondGoodsAction" method="findSercondByFirstGoodsId">
+			<result type="json" name="findSercondByFirstGoodsId">
+				<param name="root">jsonArray</param>
+			</result>
+		</action>
+		
+		
+		
+		<action name="goodsList" class="com.lsp.logistics.web.action.goods.GoodsAction" method="findAllGoods">
+			<result name="findAllGoods">/WEB-INF/jsp/goods/GoodsList.jsp</result>
+		</action>
+		<action name="goodsAdd" class="com.lsp.logistics.web.action.goods.SecondGoodsAction" method="findFirstGoods">
+			<result name="firstGoods">/WEB-INF/jsp/goods/GoodsAdd.jsp</result>
+		</action>
+		<action name="goods_add" class="com.lsp.logistics.web.action.goods.GoodsAction" method="addGoods">
+			<result name="add" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
+		<action name="goods_delete" class="com.lsp.logistics.web.action.goods.GoodsAction" method="deleteGoods">
+			<result name="delete" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
+		<action name="goods_findById" class="com.lsp.logistics.web.action.goods.GoodsAction" method="findGoodsById">
+			<result name="findGoodsById">/WEB-INF/jsp/goods/GoodsUpdate.jsp</result>
+		</action>
+		<action name="goods_update" class="com.lsp.logistics.web.action.goods.GoodsAction" method="updateGoods">
+			<result name="update" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
+		<action name="findGoodsBySecondGoodsId" class="com.lsp.logistics.web.action.goods.GoodsAction" method="findGoodsBySecondGoodsId">
+			<result type="json" name="findGoodsBySecondGoodsId">
+				<param name="root">jsonArray</param>
+			</result>
+		</action>
+		<action name="goods_find" class="com.lsp.logistics.web.action.goods.GoodsAction" method="findGoods">
+			<result name="findGoods">/WEB-INF/jsp/goods/GoodsList.jsp</result>
+			<result name="errorFindGoods" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
+		
+		
+		
+		
+	</package>
+</struts>

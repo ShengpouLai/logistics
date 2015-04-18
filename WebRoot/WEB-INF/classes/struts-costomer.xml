@@ -1,0 +1,46 @@
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+	
+	<struts>
+	<!-- 指定由Spring负责action对象的创建 -->
+	<constant name="struts.objectFactory" value="spring" />
+	<!-- 设置Struts2允许动态方法的调用 -->
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	
+	<package name="costomer" extends="json-default">
+		<!-- <action name="*" class="com.lsp.logistics.web.action.ToPage" method="{1}Page">
+			<result name="costomerAdd">/WEB-INF/jsp/costomer/costomerAdd.jsp</result>
+			<result name="costomerFind" type="redirectAction">costomer_findAll</result>
+		</action> -->
+		<action name="costomerAdd" class="com.lsp.logistics.web.action.costomer.CostomerAction" method="costomer">
+			<result name="costomer">/WEB-INF/jsp/costomer/costomerAdd.jsp</result>
+		</action>
+		<action name="costomer_add" class="com.lsp.logistics.web.action.costomer.CostomerAction" method="addCostomer">
+			<result type="json" name="add">
+				<param name="root">data</param>
+			</result>
+		</action>
+		<action name="costomerList" class="com.lsp.logistics.web.action.costomer.CostomerAction" method="findAllCostomer">
+			<result name="costomerFindAll">/WEB-INF/jsp/costomer/costomerList.jsp</result>
+		</action>
+		<action name="costomer_delete" class="com.lsp.logistics.web.action.costomer.CostomerAction" method="deleteCostomer">
+			<result type="json" name="costomerDelete">
+				<param name="root">data</param>			
+			</result>
+		</action>
+		<action name="costomer_findById" class="com.lsp.logistics.web.action.costomer.CostomerAction" method="findCostomerById">
+			<result name="costomerFindById">/WEB-INF/jsp/costomer/costomerUpdate.jsp</result>
+		</action>
+		<action name="costomer_update" class="com.lsp.logistics.web.action.costomer.CostomerAction" method="updateCostomer">
+			<result type="json" name="costomerUpdate">
+				<param name="root">data</param>
+			</result>
+		</action>
+		<action name="costomer_findCostomer" class="com.lsp.logistics.web.action.costomer.CostomerAction" method="findCostomer">
+			<result name="costomersFind">/WEB-INF/jsp/costomer/costomerList.jsp</result>
+		</action>
+	</package>
+	
+	</struts>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.lsp.logistics.entity.CentralStorageOutOfOrder"
+		table="t_central_storage_outof_order">
+		<id name="id" type="java.lang.Integer">
+			<column name="id" />
+			<generator class="identity" />
+		</id>
+		<property name="centralStorageOutOfOrderId" type="java.lang.String">
+			<column name="centralStorageOutOfOrderId"/>
+		</property>
+		<property name="centralStorageOutOfTime" type="java.util.Date">
+			<column name="centralStorageOutOfTime"/>
+		</property>
+		<property name="centralStorageOutOfRemark" type="java.lang.String">
+			<column name="centralStorageOutOfRemark"/>
+		</property>
+		<many-to-one name="goodsTransferOrder" class="com.lsp.logistics.entity.GoodsTransferOrderEntity" column="goodsTransferOrder" lazy="false"></many-to-one>
+	</class>
+</hibernate-mapping>

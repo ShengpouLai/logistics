@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.lsp.logistics.entity.CheckGoodsOrder"
+		table="t_check_goods_order">
+		<id name="id" type="java.lang.Integer">
+			<column name="id" />
+			<generator class="identity" />
+		</id>
+		<property name="checkGoodsOrderId" type="java.lang.String">
+			<column name="checkGoodsOrderId" />
+		</property>
+		<property name="checkGoodsOrderDate" type="java.util.Date">
+			<column name="checkGoodsOrderDate" />
+		</property>
+		<property name="putInTime" type="java.util.Date">
+			<column name="putInTime" />
+		</property>
+		<property name="checkGoodsState" type="java.lang.String">
+			<column name="checkGoodsState"/>
+		</property>
+		<many-to-one name="goodsTransferOrder"
+			class="com.lsp.logistics.entity.GoodsTransferOrderEntity" column="goodsTransferOrder"
+			lazy="false" />
+	</class>
+</hibernate-mapping>

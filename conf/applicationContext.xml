@@ -1,0 +1,317 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans    
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd   
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-3.0.xsd
+           http://www.springframework.org/schema/aop
+           http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+           http://www.springframework.org/schema/tx
+           http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+
+	<!-- 配置数据源 -->
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/logistics" />
+		<property name="username" value="root" />
+		<property name="password" value="root" />
+	</bean>
+
+	<!-- 配置会话工厂 -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<!-- 引用数据源 -->
+		<property name="dataSource" ref="dataSource"></property>
+		<!-- 指定扫描实体类的包路径 -->
+		<!-- <property name="packagesToScan" value="com.ssh.edu.core.entity" /> -->
+		<!-- 配置Hibernate相关的属性 -->
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.show_sql">false</prop>
+			</props>
+		</property>
+		<property name="mappingResources">
+			<list>
+				<value>com/lsp/logistics/entity/CostomerEntity.hbm.xml</value>
+				<value>com/lsp/logistics/entity/FirstGoodsEntity.hbm.xml</value>
+				<value>com/lsp/logistics/entity/SecondGoodsEntity.hbm.xml</value>
+				<value>com/lsp/logistics/entity/GoodsEntity.hbm.xml</value>
+				<value>com/lsp/logistics/entity/OrderEntity.hbm.xml</value>
+				<value>com/lsp/logistics/entity/OrderDetailEntity.hbm.xml</value>
+				<value>com/lsp/logistics/entity/StorageEntity.hbm.xml</value>
+				<value>com/lsp/logistics/entity/StorageReserveEntity.hbm.xml</value>
+				<value>com/lsp/logistics/entity/GoodsNumberEntity.hbm.xml</value>
+				<value>com/lsp/logistics/entity/SupplierEntity.hbm.xml</value>
+				<value>com/lsp/logistics/entity/BuyGoodsOrder.hbm.xml</value>
+				<value>com/lsp/logistics/entity/SubstationEntity.hbm.xml</value>
+				<value>com/lsp/logistics/entity/TaskOrderEntity.hbm.xml</value>
+				<value>com/lsp/logistics/entity/GoodsTransferOrderEntity.hbm.xml</value>
+				<value>com/lsp/logistics/entity/CentralStoragePutInOrder.hbm.xml</value>
+				<value>com/lsp/logistics/entity/DisreibutionOrderEntity.hbm.xml</value>
+				<value>com/lsp/logistics/entity/CheckGoodsOrder.hbm.xml</value>
+				<value>com/lsp/logistics/entity/CentralStorageOutOfOrder.hbm.xml</value>
+				<value>com/lsp/logistics/entity/SubstationStoragePutInOrder.hbm.xml</value>
+				<value>com/lsp/logistics/entity/DeliveryStaffEntity.hbm.xml</value>
+				<value>com/lsp/logistics/entity/SignOrder.hbm.xml</value>
+				<value>com/lsp/logistics/entity/SubstationStorageOutOfOrder.hbm.xml</value>
+				<value>com/lsp/logistics/entity/DeliveryOrder.hbm.xml</value>
+				<value>com/lsp/logistics/entity/ReceiptEntity.hbm.xml</value>
+				<value>com/lsp/logistics/entity/OrderReturnEntity.hbm.xml</value>
+				<value>com/lsp/logistics/entity/GoodsReturnEntity.hbm.xml</value>
+				<value>com/lsp/logistics/entity/GoodsReturnDetail.hbm.xml</value>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- 配置Dao -->
+	<bean id="costomerDao" class="com.lsp.logistics.dao.impl.CostomerDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="firstGoodsDao" class="com.lsp.logistics.dao.impl.goods.FirstGoodsDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="secondGoodsDao" class="com.lsp.logistics.dao.impl.goods.SecondGoodsDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="goodsDao" class="com.lsp.logistics.dao.impl.goods.GoodsDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="orderDao" class="com.lsp.logistics.dao.impl.order.OrderDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="storageDao" class="com.lsp.logistics.dao.impl.storage.StorageDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="storageReserveDao" class="com.lsp.logistics.dao.impl.storage.StorageReserveDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="goodsNumberDao" class="com.lsp.logistics.dao.impl.storage.GoodsNumberDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="supplierDao" class="com.lsp.logistics.dao.impl.supplier.SupplierDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="buyGoodsOrderDao" class="com.lsp.logistics.dao.impl.supplier.BuyGoodsOrderDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="orderDetailDao" class="com.lsp.logistics.dao.impl.order.OrderDetailDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="substationDao" class="com.lsp.logistics.dao.impl.substation.SubstationDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="taskOrderDao" class="com.lsp.logistics.dao.impl.substation.TaskOrderDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="gtOrderDao" class="com.lsp.logistics.dao.impl.substation.GoodsTransferOrderDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="centralStoragePutInOrderDao" class="com.lsp.logistics.dao.impl.storage.invoicing.CentralStoragePutInOrderDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="disreibutionOrderDao" class="com.lsp.logistics.dao.impl.storage.invoicing.DisreibutionOrderDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="checkGoodsOrderDao" class="com.lsp.logistics.dao.impl.storage.invoicing.CheckGoodsOrderDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="centralStorageOutOfOrderDao" class="com.lsp.logistics.dao.impl.storage.invoicing.CentralStorageOutOfOrderDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="substationStoragePutInOrderDao" class="com.lsp.logistics.dao.impl.storage.invoicing.SubstationStoragePutInOrderDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>		
+	</bean>
+	<bean id="deliveryStaffDao" class="com.lsp.logistics.dao.impl.substation.DeliveryStaffDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>		
+	</bean>
+	<bean id="signOrderDao" class="com.lsp.logistics.dao.impl.substation.SignOrderDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="deliveryOrderDao" class="com.lsp.logistics.dao.impl.substation.DeliveryOrderDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="substationStorageOutOfDao" class="com.lsp.logistics.dao.impl.storage.invoicing.SubstationStorageOutOfDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="receiptDao" class="com.lsp.logistics.dao.impl.substation.ReceiptDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="orderReturnDao" class="com.lsp.logistics.dao.impl.order.OrdeReturnDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="goodsReturnDetailDao" class="com.lsp.logistics.dao.impl.order.GoodsReturnDetailDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="goodsReturnDao" class="com.lsp.logistics.dao.impl.order.GoodsReturnEntityDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	
+	
+	<!-- 配置Service -->
+	<bean id="costomerService" class="com.lsp.logistics.service.impl.CostomerServiceImpl">
+		<property name="costomerDao" ref="costomerDao"/>
+	</bean>
+	<bean id="firstGoodsService" class="com.lsp.logistics.service.impl.goods.FirstGoodsServiceImpl">
+		<property name="firstGoodsDao" ref="firstGoodsDao"/>
+	</bean>
+	<bean id="secondGoodsService" class="com.lsp.logistics.service.impl.goods.SecondGoodsServiceImpl">
+		<property name="secondGoodsDao" ref="secondGoodsDao"/>
+	</bean>
+	<bean id="goodsService" class="com.lsp.logistics.service.impl.goods.GoodsServiceImpl">
+		<property name="goodsDao" ref="goodsDao"/>
+	</bean>
+	<bean id="orderService" class="com.lsp.logistics.service.impl.order.OrderServiceImpl">
+		<property name="orderDao" ref="orderDao"/>
+		<property name="costomerDao" ref="costomerDao"/>
+		<property name="goodsDao" ref="goodsDao"/>
+		<property name="orderDetailDao" ref="orderDetailDao"/>
+	</bean>
+	<bean id="storageService" class="com.lsp.logistics.service.impl.storage.StorageServiceImpl">
+		<property name="storageDao" ref="storageDao"/>
+	</bean>
+	<bean id="storageReserveService" class="com.lsp.logistics.service.impl.storage.StorageReserveServiceImpl">
+		<property name="storageReserveDao" ref="storageReserveDao"/>
+	</bean>
+	<bean id="goodsNumberService" class="com.lsp.logistics.service.impl.storage.GoodsNumberServiceImpl">
+		<property name="goodsNumberDao" ref="goodsNumberDao"/>
+		<property name="goodsDao" ref="goodsDao"/>
+	</bean>
+	<bean id="supplierService" class="com.lsp.logistics.service.impl.supplier.SupplierServiceImpl">
+			<property name="supplierDao" ref="supplierDao"/>
+	</bean>
+	<bean id="buyGoodsOrderService" class="com.lsp.logistics.service.impl.supplier.BuyGoodsOrderServiceImpl">
+		<property name="buyGoodsOrderDao" ref="buyGoodsOrderDao"/>
+	</bean>
+	<bean id="orderDetailService" class="com.lsp.logistics.service.impl.order.OrderDetailServiceImpl">
+		<property name="orderDetailDao" ref="orderDetailDao"/>
+		<property name="goodsDao" ref="goodsDao"/>
+		
+	</bean>
+	<bean id="substationService" class="com.lsp.logistics.service.impl.substation.SubstationServiceImpl">
+		<property name="substationDao" ref="substationDao"/>
+	</bean>
+	<bean id="taskOrderService" class="com.lsp.logistics.service.impl.substation.TaskOrderServiceImpl">
+		<property name="taskOrderDao" ref="taskOrderDao"/>
+		<property name="orderDao" ref="orderDao"/>
+		<property name="gtOrderDao" ref="gtOrderDao"/>
+		<property name="substationDao" ref="substationDao"/>
+		<property name="deliveryStaffDao" ref="deliveryStaffDao"/>
+		<property name="signOrderDao" ref="signOrderDao"/>
+		<property name="deliveryOrderDao" ref="deliveryOrderDao"/>
+		<property name="orderDetailDao" ref="orderDetailDao"/>
+		<property name="goodsNumberDao" ref="goodsNumberDao"/>
+	</bean>
+	<bean id="centralStoragePutInOrderService" class="com.lsp.logistics.service.impl.storage.invoicing.CentralStoragePutInOrderServiceImpl">
+		<property name="centralStoragePutInOrderDao" ref="centralStoragePutInOrderDao"/>
+	</bean>
+	<bean id="gtOrderService" class="com.lsp.logistics.service.impl.substation.GoodsTransferOrderServiceImpl">
+		<property name="gtOrderDao" ref="gtOrderDao"/>
+	</bean>
+	<bean id="disreibutionOrderService" class="com.lsp.logistics.service.impl.storage.invoicing.DisreibutionOrderServiceImpl">
+		<property name="disreibutionOrderDao" ref="disreibutionOrderDao"/>
+		<property name="gtOrderDao" ref="gtOrderDao"/>
+		<property name="orderDao" ref="orderDao"/>
+		<property name="centralStorageOutOfOrderDao" ref="centralStorageOutOfOrderDao"/>
+		<property name="orderDetailDao" ref="orderDetailDao"/>
+		<property name="goodsNumberDao" ref="goodsNumberDao"/>
+		<property name="checkGoodsOrderDao" ref="checkGoodsOrderDao"/>
+		<property name="taskOrderDao" ref="taskOrderDao"/>
+	</bean>
+	<bean id="centralStorageOutOfOrderService" class="com.lsp.logistics.service.impl.storage.invoicing.CentralStorageOutOfOrderSeviceImpl">
+		<property name="centralStorageOutOfOrderDao" ref="centralStorageOutOfOrderDao"/>
+	</bean>
+	<bean id="checkGoodsOrderService" class="com.lsp.logistics.service.impl.storage.invoicing.CheckGoodsOrderServiceImpl">
+		<property name="checkGoodsOrderDao" ref="checkGoodsOrderDao"/>
+		<property name="orderDetailDao" ref="orderDetailDao"/>
+	</bean>
+	<bean id="substationStoragePutInOrderService" class="com.lsp.logistics.service.impl.storage.invoicing.SubstationStoragePutInOrderServiceImpl">
+		<property name="checkGoodsDao" ref="checkGoodsOrderDao"/>
+		<property name="orderDetatilDao" ref="orderDetailDao"/>
+		<property name="goodsNumberDao" ref="goodsNumberDao"/>
+		<property name="orderDao" ref="orderDao"/>
+		<property name="taskOrderDao" ref="taskOrderDao"/>
+		<property name="substationStoragePutInDao" ref="substationStoragePutInOrderDao"/>
+	</bean>
+	<bean id="deliveryStaffService" class="com.lsp.logistics.service.impl.substation.DeliveryStaffServiceImpl">
+		<property name="deliveryStaffDao" ref="deliveryStaffDao"/>
+	</bean>
+	<bean id="signOrderService" class="com.lsp.logistics.service.impl.substation.SignOrderServiceImpl">
+		<property name="signOrderDao" ref="signOrderDao"/>
+	</bean>
+	<bean id="deliveryOrderService" class="com.lsp.logistics.service.impl.substation.DeliveryOrderServiceImpl">
+		<property name="deliveryOrderDao" ref="deliveryOrderDao"/>
+	</bean>
+	<bean id="substationStorageOutOfService" class="com.lsp.logistics.service.impl.storage.invoicing.SubstationStorageOutOfServiceImpl">
+		<property name="substationStorageOutOfDao" ref="substationStorageOutOfDao"/>
+		<property name="taskOrderDao" ref="taskOrderDao"/>
+		<property name="orderDao" ref="orderDao"/>
+		<property name="deliveryOrderDao" ref="deliveryOrderDao"/>
+		<property name="orderDetailDao" ref="orderDetailDao"/>
+		<property name="goodsNumberDao" ref="goodsNumberDao"/>
+	</bean>
+	<bean id="receiptService" class="com.lsp.logistics.service.impl.substation.ReceiptServiceImpl">
+		<property name="receiptDao" ref="receiptDao"/>
+		<property name="taskOrder" ref="taskOrderDao"/>
+		<property name="deliveryOrderDao" ref="deliveryOrderDao"/>
+		<property name="orderDao" ref="orderDao"/>
+	</bean>
+	<bean id="orderReturnService" class="com.lsp.logistics.service.impl.order.OrderReturnServiceImpl">
+		<property name="orderReturnDao" ref="orderReturnDao"/>
+		<property name="orderDao" ref="orderDao"/>
+	</bean>
+	<bean id="goodsReturnDetailService" class="com.lsp.logistics.service.impl.order.GoodsReturnDetailServiceImpl">
+		<property name="goodsReturnDetailDao" ref="goodsReturnDetailDao"/>
+	</bean>
+	<bean id="goodsReturnService" class="com.lsp.logistics.service.impl.order.GoodsReturnEntityServiceImpl">
+		<property name="goodsReturnDao" ref="goodsReturnDao"/>
+	</bean>
+	
+	
+	
+	
+	
+	<!-- 配置Action -->
+	<bean id="costomerAction" class="com.lsp.logistics.web.action.costomer.CostomerAction">
+		<property name="costomerService" ref="costomerService"/>
+	</bean>
+	<bean id="firstGoodsAction" class="com.lsp.logistics.web.action.goods.FirstGoodsAction">
+		<property name="firstGoodsService" ref="firstGoodsService"/>
+	</bean>
+	<bean id="secondGoodsAction" class="com.lsp.logistics.web.action.goods.SecondGoodsAction">
+		<property name="firstGoodsService" ref="firstGoodsService"/>
+		<property name="secondGoodsService" ref="secondGoodsService"/>
+	</bean>
+	<bean id="goodsAction" class="com.lsp.logistics.web.action.goods.GoodsAction">
+		<property name="goodsService" ref="goodsService"/>
+	</bean>
+	<bean id="orderAction" class="com.lsp.logistics.web.action.order.OrderAction">
+		<property name="orderService" ref="orderService"/>
+	</bean>
+	<bean id="storageAction" class="com.lsp.logistics.web.action.storage.StorageAction">
+		<property name="storageService" ref="storageService"/>
+		<property name="storageReserveService" ref="storageReserveService"/>
+		<property name="goodsNumberService" ref="goodsNumberService"/>
+	</bean>
+	<bean id="supplierAction" class="com.lsp.logistics.web.action.supplier.SupplierAction">
+		<property name="supplierService" ref="supplierService"/>
+	</bean>
+	<bean id="substation" class="com.lsp.logistics.web.action.substation.SubstationAction">
+		<property name="substationService" ref="substationService"/>
+	</bean>
+	<bean id="storageInvoicingManagerAction" class="com.lsp.logistics.web.action.storage.invoicing.StorageInvoicingManagerAction">
+		<property name="centralStoragePutInOrderService" ref="centralStoragePutInOrderService"/>
+		<property name="gtOrderService" ref="gtOrderService"/>
+	</bean>
+	
+	
+	
+	
+	
+	
+
+</beans>

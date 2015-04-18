@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.lsp.logistics.entity.CentralStoragePutInOrder"
+		table="t_central_storage_putin_order">
+		<id name="id" type="java.lang.Integer">
+			<column name="id" />
+			<generator class="identity" />
+		</id>
+		<property generated="never" lazy="false" name="shouldPutInNumber"
+			type="java.lang.Integer">
+			<column name="shouldPutInNumber" />
+		</property>
+		<property generated="never" lazy="false" name="actualPutInNumber"
+			type="java.lang.Integer">
+			<column name="actualPutInNumber" />
+		</property>
+		<property generated="never" lazy="false" name="actualPutInDate"
+			type="java.util.Date">
+			<column name="actualPutInDate" />
+		</property>
+		<property generated="never" lazy="false" name="centralStoragePutInRemark"
+			type="java.lang.String">
+			<column name="centralStoragePutInRemark" />
+		</property>
+		<many-to-one class="com.lsp.logistics.entity.BuyGoodsOrder"
+			column="buyGoodsOrder" lazy="false" name="buyGoodsOrder" />
+	</class>
+</hibernate-mapping>

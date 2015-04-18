@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<!-- 指定由Spring负责action对象的创建 -->
+	<constant name="struts.objectFactory" value="spring" />
+	<!-- 设置Struts2允许动态方法的调用 -->
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	
+	<package name="dispatchOrder" extends="json-default">
+		<action name="dispatchOrder" class="com.lsp.logistics.web.action.dispatch.DispatchAction" method="dispatchOrderList">
+			<result name="dispatchOrderList">/WEB-INF/jsp/dispatch/dispatchOrderList.jsp</result>
+		</action>
+		<action name="dispatch" class="com.lsp.logistics.web.action.dispatch.DispatchAction" method="dispatch">
+			<result name="dispatch" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
+	</package>
+</struts>

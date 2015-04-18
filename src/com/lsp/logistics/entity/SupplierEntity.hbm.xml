@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.lsp.logistics.entity.SupplierEntity" table="t_supplier">
+		<id name="id" type="java.lang.Integer">
+			<column name="id" />
+			<generator class="identity" />
+		</id>
+		<property name="supplierName" type="java.lang.String">
+			<column name="supplierName"/>
+		</property>
+		<property name="supplierAddress" type="java.lang.String">
+			<column name="supplierAddress"/>
+		</property>
+		<property name="supplierContact" type="java.lang.String">
+			<column name="supplierContact"/>
+		</property>
+		<property name="supplierPhone" type="java.lang.String">
+			<column name="supplierPhone"/>
+		</property>
+		<property name="supplierBank" type="java.lang.String">
+			<column name="supplierBank"/>
+		</property>
+		<property name="supplierBankAccount" type="java.lang.String">
+			<column name="supplierBankAccount"/>
+		</property>
+		<property name="supplierFax" type="java.lang.String">
+			<column name="supplierFax"/>
+		</property>
+		<property name="supplierPostcode" type="java.lang.String">
+			<column name="supplierPostcode"/>
+		</property>
+		<property name="supplierLegal" type="java.lang.String">
+			<column name="supplierLegal"/>
+		</property>
+		<property name="supplierRemark" type="java.lang.String">
+			<column name="supplierRemark"/>
+		</property>
+		
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,77 @@
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<!-- 指定由Spring负责action对象的创建 -->
+	<constant name="struts.objectFactory" value="spring" />
+	<!-- 设置Struts2允许动态方法的调用 -->
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	
+	<package name="storage" extends="json-default">
+		<action name="storageList" class="com.lsp.logistics.web.action.storage.StorageAction" method="findAllStorage">
+			<result name="findAllStorage">/WEB-INF/jsp/storage/StorageList.jsp</result>
+		</action>
+		<action name="storageAdd" class="com.lsp.logistics.web.action.storage.StorageAction" method="openAddStoragePage">
+			<result name="openAddStoragePage">/WEB-INF/jsp/storage/StorageAdd.jsp</result>
+		</action>
+		<action name="storage_add" class="com.lsp.logistics.web.action.storage.StorageAction" method="addStorage">
+			<result name="add" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
+		<action name="storage_reserve_add" class="com.lsp.logistics.web.action.storage.StorageAction" method="addStorageReserve">
+			<result name="addStorageReserve" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
+		<action name="storage_delete" class="com.lsp.logistics.web.action.storage.StorageAction" method="deleteStorage">
+			<result name="delete" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
+		<action name="storage_findById" class="com.lsp.logistics.web.action.storage.StorageAction" method="findById">
+			<result name="findById">/WEB-INF/jsp/storage/StorageUpdate.jsp</result>
+		</action>
+		<action name="storage_update" class="com.lsp.logistics.web.action.storage.StorageAction" method="updateStorage">
+			<result name="update" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
+		<action name="storage_find" class="com.lsp.logistics.web.action.storage.StorageAction" method="findStorage">
+			<result name="findStorage">/WEB-INF/jsp/storage/StorageList.jsp</result>
+			<result name="errorFind" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
+		<action name="lookGoodsNumber" class="com.lsp.logistics.web.action.storage.StorageAction" method="lookGoodsNumber">
+			<result name="lookGoodsNumber">/WEB-INF/jsp/storage/GoodsNumber.jsp</result>
+		</action>
+		
+		
+		
+		
+		
+		<action name="storageReserveAdd" class="com.lsp.logistics.web.action.storage.StorageAction" method="openAddStorageReservePage">
+			<result name="openAddStorageReservePage">/WEB-INF/jsp/storage/StorageReserveAdd.jsp</result>
+		</action>
+		<action name="findStorageReserver" class="com.lsp.logistics.web.action.storage.StorageAction" method="findStorageReserver">
+			<result name="findStorageReserver">/WEB-INF/jsp/storage/StorageReserveFind.jsp</result>
+		</action>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</package>
+</struts>

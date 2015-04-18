@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.lsp.logistics.entity.SubstationStorageOutOfOrder"
+		table="t_substation_storage_outof_order">
+		<id name="id" type="java.lang.Integer">
+			<column name="id" />
+			<generator class="identity" />
+		</id>
+		<property name="substationStorageOutOfOrderRemark" type="java.lang.String">
+			<column name="substationStorageOutOfOrderRemark" />
+		</property>
+		<property name="substationStorageOutOfOrderDate" type="java.util.Date">
+			<column name="substationStorageOutOfOrderDate" />
+		</property>
+		<many-to-one name="taskOrder" 
+			class="com.lsp.logistics.entity.TaskOrderEntity" column="taskOrder" lazy="false"></many-to-one>
+	</class>
+</hibernate-mapping>
+	

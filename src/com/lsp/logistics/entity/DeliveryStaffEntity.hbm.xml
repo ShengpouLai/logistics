@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.lsp.logistics.entity.DeliveryStaffEntity" table="t_delivery_staff">
+		<id name="id" type="java.lang.Integer">
+			<column name="id" />
+			<generator class="identity" />
+		</id>
+		<property name="deliveryStaffName" type="java.lang.String">
+			<column name="deliveryStaffName" />
+		</property>
+		<property name="deliveryStaffPhone" type="java.lang.String">
+			<column name="deliveryStaffPhone" />
+		</property>
+		<many-to-one name="substation_t" column="substation_t" lazy="false"
+			class="com.lsp.logistics.entity.SubstationEntity"></many-to-one>
+	</class>
+</hibernate-mapping>

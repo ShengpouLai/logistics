@@ -1,0 +1,84 @@
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<!-- 指定由Spring负责action对象的创建 -->
+	<constant name="struts.objectFactory" value="spring" />
+	<!-- 设置Struts2允许动态方法的调用 -->
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	
+	<package name="order" extends="json-default">
+	
+		<action name="openOrderDetail" class="com.lsp.logistics.web.action.order.OrderAction" method="openOrderDetail">
+			<result name="openOrderDetail">/WEB-INF/jsp/order/orderDetailList.jsp</result>
+		</action>
+		<action name="order_detail_goods_find" class="com.lsp.logistics.web.action.goods.GoodsAction" method="findGoods">
+			<result name="findGoods">/WEB-INF/jsp/order/orderDetailList.jsp</result>
+			<result name="errorFindGoods" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
+		<action name="orderDetailAdd" class="com.lsp.logistics.web.action.order.OrderAction" method="orderDetailAdd">
+			<result name="orderDetailAdd" type="json">
+				<param name="root">data</param>
+			</result>
+			<result name="errorGoodsNumber" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
+		
+		<action name="orderAdd" class="com.lsp.logistics.web.action.order.OrderAction" method="operAddOrderPage">
+			<result name="operAddOrderPage">/WEB-INF/jsp/order/orderAdd.jsp</result>
+		</action>
+		<action name="orderList" class="com.lsp.logistics.web.action.order.OrderAction" method="findAllOrder">
+			<result name="findAllOrder">/WEB-INF/jsp/order/orderList.jsp</result>
+		</action>
+		<action name="order_add" class="com.lsp.logistics.web.action.order.OrderAction" method="addOrder">
+			<result name="add" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
+		
+		<action name="order_find" class="com.lsp.logistics.web.action.order.OrderAction" method="findOrder">
+			<result name="find">/WEB-INF/jsp/order/orderList.jsp</result>
+			<result name="errorFindOrder" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
+		<action name="findOrderDetailByOrder" class="com.lsp.logistics.web.action.order.OrderAction" method="findOrderDetailByOrder">
+			<result name="findOrderDetailByOrder">/WEB-INF/jsp/order/orderDetail.jsp</result>
+		</action>
+		
+		<action name="orderReturn" class="com.lsp.logistics.web.action.order.OrderAction" method="orderReturn">
+			<result name="orderReturn">/WEB-INF/jsp/order/OrderReturn.jsp</result>
+			<result name="error" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
+		<action name="order_return" class="com.lsp.logistics.web.action.order.OrderAction" method="order_return">
+			<result name="order_return" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
+		<action name="goodsReturn" class="com.lsp.logistics.web.action.order.OrderAction" method="goodsReturn">
+			<result name="error" type="json">
+				<param name="root">data</param>
+			</result>
+			<result name="goodsReturn">/WEB-INF/jsp/order/GoodsReturn.jsp</result>
+		</action>
+		<action name="goodsReturnDetailAdd" class="com.lsp.logistics.web.action.order.OrderAction" method="goodsReturnDetailAdd">
+			<result name="goodsReturnDetailAdd" type="json">
+				<param name="root">data</param>
+			</result>
+			<result name="goodsNumError" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
+		<action name="goods_return" class="com.lsp.logistics.web.action.order.OrderAction" method="goods_return">
+			<result name="goods_return" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
+	</package>
+</struts>

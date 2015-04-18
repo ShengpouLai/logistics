@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.lsp.logistics.entity.GoodsEntity" table="t_goods">
+		<id name="id" type="java.lang.Integer">
+			<column name="id" />
+			<generator class="identity" />
+		</id>
+		<property generated="never" lazy="false" name="goodsId"
+			type="java.lang.String">
+			<column name="goodsId" />
+		</property>
+		<property generated="never" lazy="false" name="goodsName"
+			type="java.lang.String">
+			<column name="goodsName" />
+		</property>
+		<property generated="never" lazy="false" name="goodsUnit"
+			type="java.lang.String">
+			<column name="goodsUnit" />
+		</property>
+		<property generated="never" lazy="false" name="goodsPrice"
+			type="java.lang.Double">
+			<column name="goodsPrice" />
+		</property>
+		<property generated="never" lazy="false" name="goodsDiscount"
+			type="java.lang.Double">
+			<column name="goodsDiscount" />
+		</property>
+		<property generated="never" lazy="false" name="goodsCostPrice"
+			type="java.lang.Double">
+			<column name="goodsCostPrice" />
+		</property>
+		<property generated="never" lazy="false" name="goodsModelId"
+			type="java.lang.String">
+			<column name="goodsModelId" />
+		</property>
+		<property generated="never" lazy="false" name="goodsQGP"
+			type="java.lang.String">
+			<column name="goodsQGP" />
+		</property>
+		<property generated="never" lazy="false" name="goodsChange"
+			type="java.lang.String">
+			<column name="goodsChange" />
+		</property>
+		<property generated="never" lazy="false" name="goodsConcel"
+			type="java.lang.String">
+			<column name="goodsConcel" />
+		</property>
+		<property generated="never" lazy="false" name="goodsRemark"
+			type="java.lang.String">
+			<column name="goodsRemark" />
+		</property>
+		<property generated="never" lazy="false" name="goodsState"
+			type="java.lang.String">
+			<column name="goodsState" />
+		</property>
+		<many-to-one class="com.lsp.logistics.entity.SecondGoodsEntity"
+			column="secondGoods" lazy="false" name="secondGoods" />
+		<many-to-one class="com.lsp.logistics.entity.SupplierEntity"
+			column="supplier" lazy="false" name="supplier" />
+		<set cascade="all-delete-orphan" name="storageReserve" sort="unsorted">
+			<key>
+				<column name="goods" />
+			</key>
+			<one-to-many class="com.lsp.logistics.entity.StorageReserveEntity" />
+		</set>
+		<many-to-one cascade="all"
+			class="com.lsp.logistics.entity.GoodsNumberEntity" name="goodsNumber" />
+	</class>
+</hibernate-mapping>

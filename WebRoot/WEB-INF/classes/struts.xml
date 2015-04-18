@@ -1,0 +1,15 @@
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+	
+	<struts>
+		<include file="struts-costomer.xml" />
+		<include file="struts-goods.xml" />
+		<include file="struts-order.xml" />
+		<include file="struts-storage.xml" />
+		<include file="struts-supplier.xml" />
+		<include file="struts-substation.xml"/>
+		<include file="struts-dispatch.xml"/>
+		<include file="struts-storage-invoicing.xml"/>
+	</struts>

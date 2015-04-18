@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.lsp.logistics.entity.TaskOrderEntity" table="t_task_order">
+		<id name="id" type="java.lang.Integer">
+			<column name="id" />
+			<generator class="identity" />
+		</id>
+		<property name="taskOrderId" type="java.lang.String">
+			<column name="taskOrderId"></column>
+		</property>
+		<property name="taskOrderType" type="java.lang.String">
+			<column name="taskOrderType"></column>
+		</property>
+		<property name="taskOrderState" type="java.lang.String">
+			<column name="taskOrderState"></column>
+		</property>
+		<many-to-one name="substation" class="com.lsp.logistics.entity.SubstationEntity" column="substation" lazy="false"/>
+		<many-to-one class="com.lsp.logistics.entity.OrderEntity"
+			name="order" column="t_order" lazy="false"/>
+		<many-to-one class="com.lsp.logistics.entity.DeliveryStaffEntity"
+			name="deliveryStaff" column="deliveryStaff" lazy="false"/>
+	</class>
+</hibernate-mapping>

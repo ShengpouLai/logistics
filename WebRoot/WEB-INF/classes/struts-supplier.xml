@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+	
+<struts>
+	<!-- 指定由Spring负责action对象的创建 -->
+	<constant name="struts.objectFactory" value="spring" />
+	<!-- 设置Struts2允许动态方法的调用 -->
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+
+	<package name="supplier" extends="json-default">
+		<action name="supplierList" class="com.lsp.logistics.web.action.supplier.SupplierAction" method="findAllSuplier">
+			<result name="findAll">/WEB-INF/jsp/supplier/SupplierList.jsp</result>
+		</action>
+		<action name="supplierAdd" class="com.lsp.logistics.web.action.supplier.SupplierAction" method="openAddPage">
+			<result name="openAddPage">/WEB-INF/jsp/supplier/SupplierAdd.jsp</result>
+		</action>
+		<action name="supplier_add" class="com.lsp.logistics.web.action.supplier.SupplierAction" method="addSupplier">
+			<result name="add" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
+		<action name="supplier_delete" class="com.lsp.logistics.web.action.supplier.SupplierAction" method="deleteSupplier">
+			<result name="delete" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
+		<action name="supplier_findById" class="com.lsp.logistics.web.action.supplier.SupplierAction" method="findSupplierById">
+			<result name="findById">/WEB-INF/jsp/supplier/SupplierUpdate.jsp</result>
+		</action>
+		<action name="supplier_update" class="com.lsp.logistics.web.action.supplier.SupplierAction" method="updateSupplier">
+			<result name="update" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
+		<action name="supplier_find" class="com.lsp.logistics.web.action.supplier.SupplierAction" method="findSupplier">
+			<result name="findSupplier">/WEB-INF/jsp/supplier/SupplierList.jsp</result>
+			<result name="error" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
+		
+		
+		
+		
+		<action name="buyGoodsList" class="com.lsp.logistics.web.action.supplier.GoodsNumberManagementAction" method="buyGoodsList">
+			<result name="buyGoodsList">/WEB-INF/jsp/supplier/BuyGoodsList.jsp</result>
+		</action>
+		<action name="openBuyGoodsPage" class="com.lsp.logistics.web.action.supplier.GoodsNumberManagementAction" method="openBuyGoodsPage">
+			<result name="openBuyGoodsPage">/WEB-INF/jsp/supplier/BuyGoods.jsp</result>
+			<result name="goodsHas" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
+		<action name="buyGoods" class="com.lsp.logistics.web.action.supplier.GoodsNumberManagementAction" method="buyGoods">
+			<result name="buyGoods" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</package>
+</struts>
