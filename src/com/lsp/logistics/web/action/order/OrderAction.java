@@ -315,6 +315,9 @@ public class OrderAction extends ActionSupport {
 		this.orderService = orderService;
 	}
 
+	/*
+	 * 进入新建订单页面
+	 */
 	public String openOrderDetail() {
 		goodsList = goodsService.findAllGoods();
 		goodsNumberList = goodsNumberService.findAll();
@@ -324,11 +327,12 @@ public class OrderAction extends ActionSupport {
 		if (costomerId != null) {
 			session.setAttribute("costomerId", costomerId);
 		}
-		
-		
 		return "openOrderDetail";
 	}
 
+	/*
+	 * 往购物车里添加商品
+	 */
 	@SuppressWarnings("unchecked")
 	public String orderDetailAdd() {
 
@@ -426,6 +430,9 @@ public class OrderAction extends ActionSupport {
 		return "orderDetailAdd";
 	}
 
+	/*
+	 * 跳转新订订单页面
+	 */
 	public String operAddOrderPage() {
 		HttpServletRequest req = ServletActionContext.getRequest();
 		HttpSession session = req.getSession();
@@ -462,6 +469,9 @@ public class OrderAction extends ActionSupport {
 		return "operAddOrderPage";
 	}
 
+	/*
+	 * 新订订单
+	 */
 	public String addOrder() {
 		data = new HashMap<String, Object>();
 		if (this.orderService.saveOrder(order)) {
@@ -479,11 +489,17 @@ public class OrderAction extends ActionSupport {
 		return "add";
 	}
 
+	/*
+	 * 查询所有订单
+	 */
 	public String findAllOrder() {
 		orderList = this.orderService.findAllOrder();
 			return "findAllOrder";
 	}
 	
+	/*
+	 * 按条件查询订单
+	 */
 	public String findOrder(){
 		orderList = orderService.findOrder(orderId, orderType, orderState, costomerName, costomerMobailPhone, orderBeginDate, orderEndDate);
 		if(orderList.size() == 0){
@@ -497,11 +513,17 @@ public class OrderAction extends ActionSupport {
 		}
 	}
 	
+	/*
+	 * 通过订单Id查询订单详细
+	 */
 	public String findOrderDetailByOrder(){
 		orderDetailList = this.orderDetailService.findByOrder(id);
 		return "findOrderDetailByOrder";
 	}
 	
+	/*
+	 * 跳转订单退订页面
+	 */
 	public String orderReturn(){
 		order = this.orderService.findById(order.getId());
 		orderDetailList = this.orderDetailService.findByOrder(order.getId());
@@ -516,6 +538,9 @@ public class OrderAction extends ActionSupport {
 		}
 	}
 	
+	/*
+	 * 订单退订
+	 */
 	public String order_return(){
 		data = new HashMap<String, Object>();
 		if(this.orderReturnService.save(orderReturn, orderReturn.getOrder().getId())){

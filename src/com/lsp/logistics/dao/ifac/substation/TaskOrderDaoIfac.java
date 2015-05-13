@@ -20,4 +20,9 @@ public interface TaskOrderDaoIfac extends BaseDao<TaskOrderEntity> {
 			String substationId, String costomerName, String costomerPhone,
 			String orderDeliverDate);
 
+	List<TaskOrderEntity> findTask(String substationName);
+
+	List<TaskOrderEntity> receipt_task_find(String taskOrderId,
+			String deliveryStaffName);
+
 }

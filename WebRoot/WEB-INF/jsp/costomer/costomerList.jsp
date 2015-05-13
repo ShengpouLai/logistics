@@ -27,7 +27,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					身份证号：<input type="text" name="costomerId" class="digits" minlength="18" maxlength="18" />
 				</td>
 				<td>
-					电话号码：<input type="text" name="costomerMobailPhone" class="phone"/>
+					手机号：<input type="text" name="costomerMobailPhone" class="phone"/>
 				</td>
 				
 			</tr>
@@ -35,7 +35,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="subBar">
 			<ul>
 				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">检索</button></div></div></li>
-				<li><a class="button" href="demo_page6.html" target="dialog" mask="true" title="查询框"><span>高级检索</span></a></li>
 			</ul>
 		</div>
 	</div>

@@ -362,16 +362,25 @@ public class StorageInvoicingManagerAction extends ActionSupport {
 		this.buyGoodsOrderService = buyGoodsOrderService;
 	}
 
+	/*
+	 * 查询出已购货但为入库的购货单
+	 */
 	public String centralSBGList(){
 		buyGoodsOrderList = this.buyGoodsOrderService.findNoPutIn();
 		return "centralSBGList";
 	}
 	
+	/*
+	 * 跳转中心库房入库页面
+	 */
 	public String openCSPutIn(){
 		buyGoodsOrder = this.buyGoodsOrderService.findById(buyGoodsOrder.getId());
 		return "openCSPutIn";
 	}
 	
+	/*
+	 * 中心库房入库
+	 */
 	public String centralStoragePutIn(){
 		//修改购货单状态，表示已经入库
 		this.buyGoodsOrderService.updateBuyGoodsOrderState(centralStoragePutInOrder.getBuyGoodsOrder().getId());
@@ -396,18 +405,22 @@ public class StorageInvoicingManagerAction extends ActionSupport {
 		return "centralStoragePutIn";
 	}
 	
+	/*
+	 * 等待调拨的商品调拨单列表
+	 */
 	public String transferOrderList(){
 		try{
 			goodsTransferOrderList = this.gtOrderService.findTransferOrderList();
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 		return "transferOrderList";
 	}
 	
+	/*
+	 * 中心库房调拨出库
+	 */
 	public String transferGoods(){
-		//生成分发单
 		data = new HashMap<String, Object>();
 		if(disreibutionOrderService.save(goodsTransferOrderId)){
 			data.put("statusCode",200);
@@ -421,22 +434,20 @@ public class StorageInvoicingManagerAction extends ActionSupport {
 			data.put("statusCode",300);
 			data.put("message", "操作失败");
 		}
-		
-		//生成出库单
-		
-		//更改商品调拨单状态，1--0
-//		this.gtOrderService.upateState(goodsTransferOrderId);
-		
-		//更改订单状态
-		
 		return "transferGoods";
 	}
 	
+	/*
+	 * 分站库房接收入库列表
+	 */
 	public String substationStoragePutInList(){
 		substationCheckGoodsOrderList = this.checkGoodsOrderService.findNotPutIn();
 		return "substationStoragePutInList";
 	}
 	
+	/*
+	 * 分站库房接收入库
+	 */
 	public String substationStoragePutIn(){
 		data = new HashMap<String, Object>();
 		if(this.substationStoragePutInOrderService.save(substationCheckGoodsOrderId)){
@@ -455,11 +466,17 @@ public class StorageInvoicingManagerAction extends ActionSupport {
 		return "substationStoragePutIn";
 	}
 	
+	/*
+	 * 分站库房领货列表
+	 */
 	public String substationStorageOutOfList(){
 		taskOrderList = this.taskOrderService.findToOutOf();
 		return "substationStorageOutOfList";
 	}
 	
+	/*
+	 * 配送员领货
+	 */
 	public String substationStorageOutOf(){
 		data = new HashMap<String, Object>();
 		try {
@@ -482,6 +499,9 @@ public class StorageInvoicingManagerAction extends ActionSupport {
 		return "substationStorageOutOf";
 	}
 	
+	/*
+	 * 跳转查询出入单页面
+	 */
 	public String storageInvoicingList(){
 		storageList = this.storageService.findAllStorage();
 		HttpServletRequest req = ServletActionContext.getRequest();
@@ -489,6 +509,9 @@ public class StorageInvoicingManagerAction extends ActionSupport {
 		return "storageInvoicingList";
 	}
 	
+	/*
+	 * 查询出入单
+	 */
 	public String invoicing_find(){
 		StorageEntity storage = this.storageService.findById(Integer.parseInt(storageId));
 		//中心库房入库单
@@ -510,11 +533,17 @@ public class StorageInvoicingManagerAction extends ActionSupport {
 		return "invoicing_find";
 	}
 	
+	/*
+	 * 中心库房入库单详情
+	 */
 	public String centralStoragePutInDetail(){
 		centralStoragePutInOrder = this.centralStoragePutInOrderService.findById(id);
 		return "centralStoragePutInDetail";
 	}
 	
+	/*
+	 * 中心库房出库单详情
+	 */
 	public String centralStorageOutOfDetail(){
 		centralStorageOutOfOrder = this.centralStorageOutOfOrderService.findById(id);
 		orderDetailList = this.orderDetailService.findByOrder(centralStorageOutOfOrder.getGoodsTransferOrder().getT_order().getId());

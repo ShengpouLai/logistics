@@ -76,6 +76,9 @@ public class CostomerAction extends ActionSupport {
 		return "costomer";
 	}
 	
+	/*
+	 * 新客户基本信息的录入
+	 */
 	public String addCostomer() throws Exception {
 		data = new HashMap<String, Object>();
 		if(this.costomerService.saveCostomer(costomer)){
@@ -94,11 +97,17 @@ public class CostomerAction extends ActionSupport {
 		return "add";
 	}
 	
+	/*
+	 * 跳转客户列表页面
+	 */
 	public String findAllCostomer() throws Exception{
 		costomerList = this.costomerService.findAllCostomer();
 		return "costomerFindAll";
 	}
 	
+	/*
+	 * 删除客户
+	 */
 	public String deleteCostomer() throws Exception{
 		data = new HashMap<String, Object>();
 		if(this.costomerService.deleteCostomer(costomer.getId())){
@@ -116,11 +125,17 @@ public class CostomerAction extends ActionSupport {
 		return "costomerDelete";
 	}
 	
+	/*
+	 * 通过客户Id查找客户，跳转修改客户信息页面
+	 */
 	public String findCostomerById(){
 		costomer = this.costomerService.findCostomerById(costomer.getId());
 		return "costomerFindById";
 	}
 	
+	/*
+	 * 修改客户基本信息
+	 */
 	public String updateCostomer(){
 		data = new HashMap<String, Object>();
 		if(this.costomerService.updateCostomer(costomer)){
@@ -138,6 +153,9 @@ public class CostomerAction extends ActionSupport {
 		return "costomerUpdate";
 	}
 	
+	/*
+	 * 查询客户
+	 */
 	public String  findCostomer(){
 		data = new HashMap<String, Object>();
 		try{
@@ -146,12 +164,6 @@ public class CostomerAction extends ActionSupport {
 		catch (Exception e) {
 			e.printStackTrace();
 		}
-//		data.put("statusCode",200);
-//		data.put("message", "chengg");
-//		data.put("navTabId", "costomerFind");
-//		data.put("rel", "");
-//		data.put("callbackType", "forward");
-//		data.put("forwardUrl", "costomer_findAll.action");
 		return "costomersFind";
 	}
 

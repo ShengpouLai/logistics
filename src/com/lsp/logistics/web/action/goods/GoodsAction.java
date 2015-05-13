@@ -109,15 +109,21 @@ public class GoodsAction extends ActionSupport {
 	public void setSupplierService(SupplierServiceIfac supplierService) {
 		this.supplierService = supplierService;
 	}
+	
+	/*
+	 * 跳转商品列表
+	 */
 	public String findAllGoods(){
 		goodsList = this.goodsService.findAllGoods();
 		return "findAllGoods";
 	}
 	
+	/*
+	 * 增加商品
+	 */
 	public String addGoods(){
 		data = new HashMap<String, Object>();
 		if(this.goodsService.saveGoods(goods)){
-//			this.goodsNumberService.saveGoodsNumber(goods, goods.getStorage());
 			data.put("statusCode",200);
 			data.put("message", "操作成功");
 			data.put("navTabId", "goodsList");
@@ -132,7 +138,9 @@ public class GoodsAction extends ActionSupport {
 		return "add";
 	}
 	
-	
+	/*
+	 * 通过商品二级 分类查找商品
+	 */
 	public String findGoodsBySecondGoodsId(){
 		goodsList = this.goodsService.findGoodsBySecondGoodsId(secondGoodsId);
 		jsonArray = new JSONArray();
@@ -149,6 +157,9 @@ public class GoodsAction extends ActionSupport {
 		return "findGoodsBySecondGoodsId";
 	}
 	
+	/*
+	 * 删除商品
+	 */
 	public String deleteGoods(){
 		data = new HashMap<String, Object>();
 		try{
@@ -170,6 +181,9 @@ public class GoodsAction extends ActionSupport {
 		return "delete";
 	}
 	
+	/*
+	 * 通过Id查找商品
+	 */
 	public String findGoodsById(){
 		firstGoodsList = this.firstGoodsService.findAllFirstGoods();
 		goods = this.goodsService.findGoodsById(goods.getId());
@@ -177,6 +191,9 @@ public class GoodsAction extends ActionSupport {
 		return "findGoodsById";
 	}
 	
+	/*
+	 * 修改商品信息
+	 */
 	public String updateGoods(){
 		data = new HashMap<String, Object>();
 		if(goodsService.updateGoods(goods)){
@@ -194,6 +211,9 @@ public class GoodsAction extends ActionSupport {
 		return "update";
 	}
 	
+	/*
+	 * 条件查询商品
+	 */
 	public String findGoods(){
 		goodsList = this.goodsService.findGoods(goodsId, goodsName);
 		if(goodsList.size() == 0){

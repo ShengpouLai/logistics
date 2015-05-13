@@ -75,12 +75,18 @@ public class DispatchAction extends ActionSupport{
 		this.orderService = orderService;
 	}
 	
+	/*
+	 * 跳转订单调度列表页面
+	 */
 	public String dispatchOrderList(){
 		orderList = this.orderService.findNeedDispatchOrder();
 		substationList = this.substationService.findAllSubstation();
 		return "dispatchOrderList";
 	}
 	
+	/*
+	 * 订单调度
+	 */
 	public String dispatch(){
 		data = new HashMap<String, Object>();
 		this.taskOrderService.saveTaskOrder(storageId, order.getId());
@@ -90,8 +96,6 @@ public class DispatchAction extends ActionSupport{
 		data.put("rel", "");
 		data.put("callbackType", "forward");
 		data.put("forwardUrl", "dispatchOrder.action");
-		
-		
 		return "dispatch";
 	}
 

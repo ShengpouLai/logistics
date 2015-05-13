@@ -73,7 +73,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div class="pageContent">
 	<div class="panelBar">
 		<ul class="toolBar">
-			<li><a class="add" href="orderAdd.action" target="navTab" width="800" height="370"><span>添加</span></a></li>
 			<li><a class="delete" href="orderReturn.action?order.id={order_id}" target="dialog"><span>申请退订</span></a></li>
 			<!-- <li><a class="delete" href="goodsReturn.action?order.id={order_id}" target="navTab" rel="returnGoods"><span>申请退货</span></a></li> -->
 			<li class="line">line</li>

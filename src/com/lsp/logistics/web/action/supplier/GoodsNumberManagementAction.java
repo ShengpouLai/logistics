@@ -100,8 +100,10 @@ public class GoodsNumberManagementAction extends ActionSupport{
 			StorageReserveServiceIfac storageReserveService) {
 		this.storageReserveService = storageReserveService;
 	}
-	
-	
+
+	/*
+	 * 查出缺货商品列表
+	 */
 	public String buyGoodsList(){
 		storageReserveList = new ArrayList<StorageReserveEntity>();
 		goodsNumberList = new ArrayList<GoodsNumberEntity>();
@@ -115,18 +117,22 @@ public class GoodsNumberManagementAction extends ActionSupport{
 		return "buyGoodsList";
 	}
 	
+	/*
+	 * 跳转购货页面
+	 */
 	public String openBuyGoodsPage(){
 		goods = goodsService.findGoodsById(goods.getId());
 		storageReserve = storageReserveService.findShortageGoodsReserve(goods).get(0);
 		goodsNumber = goodsNumberService.findShortGoodsNumber(goods).get(0);
 	
 		return "openBuyGoodsPage";
-		
 	}
 	
+	/*
+	 * 保存购货单
+	 */
 	public String buyGoods(){
 		data = new HashMap<String, Object>();
-		
 		//保存购货入库单
 		if(this.buyGoodsOrderService.saveBuyGoodsOrder(buyGoodsOrder)){
 			this.goodsService.buyGoodsState(buyGoodsOrder.getGoods().getId());
@@ -142,10 +148,7 @@ public class GoodsNumberManagementAction extends ActionSupport{
 			data.put("statusCode", "300");
 			data.put("message", "添加失败");
 		}
-		
 		return "buyGoods";
 	}
-	
-	
 
 }

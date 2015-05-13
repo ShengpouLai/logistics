@@ -37,7 +37,6 @@ public class CostomerDaoImpl extends BaseDaoImpl<CostomerEntity> implements Cost
 		      hql=hql.substring(0,hql.lastIndexOf("and ")) ;
 		if(hql.lastIndexOf("where ")==hql.length() -6)
 		      hql=hql.substring(0,hql.lastIndexOf("where ")) ;
-		System.out.println(hql);
 		return getHibernateTemplate().find(hql);
 	}
 	

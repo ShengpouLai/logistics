@@ -130,11 +130,17 @@ public class SecondGoodsAction extends ActionSupport {
 		this.firstGoodsService = firstGoodsService;
 	}
 	
+	/*
+	 * 跳转商品二级分类列表
+	 */
 	public String findAllSecondGoods(){
 		secondGoodsList = this.secondGoodsService.findAllSecondGoods();
 		return "secondGoodsFindAll";
 	}
 	
+	/*
+	 * 跳转增加商品二级分类页面
+	 */
 	public String findFirstGoods(){
 		firstGoodsList = this.firstGoodsService.findAllFirstGoods();
 		supplierList = this.supplierService.findAllSupplier();
@@ -142,6 +148,9 @@ public class SecondGoodsAction extends ActionSupport {
 		return "firstGoods";
 	}
 	
+	/*
+	 * 增加商品二级分类
+	 */
 	public String addSecondGoods(){
 		data = new HashMap<String, Object>();
 		if(this.secondGoodsService.saveSecondGoods(secondGoods)){
@@ -159,6 +168,9 @@ public class SecondGoodsAction extends ActionSupport {
 		return "add";
 	}
 	
+	/*
+	 * 通过商品一级分类级联商品二级分类
+	 */
 	public String findSercondByFirstGoodsId(){
 		secondGoodsList = this.secondGoodsService.findSercondByFirstGoodsId(firstGoodsId);
 		data = new HashMap<String, Object>();
@@ -177,6 +189,9 @@ public class SecondGoodsAction extends ActionSupport {
 		return "findSercondByFirstGoodsId";
 	}
 	
+	/*
+	 * 删除商品二级分类
+	 */
 	public String deleteSecondGoods(){
 		data = new HashMap<String, Object>();
 		if(this.secondGoodsService.deleteSecondGoods(secondGoods.getId())){
@@ -194,12 +209,17 @@ public class SecondGoodsAction extends ActionSupport {
 		return "delete";
 	}
 	
+	/*
+	 * 通过Id查找商品二级分类
+	 */
 	public String findSecondGoodsById(){
 		firstGoodsList = this.firstGoodsService.findAllFirstGoods();
 		secondGoods = this.secondGoodsService.findSecondGoodsById(secondGoods.getId());
 		return "findById";
 	}
-	
+	/*
+	 * 修改商品二级分类信息
+	 */
 	public String updateSecondGoods(){
 		data = new HashMap<String, Object>();
 		if(this.secondGoodsService.updateSecondGoods(secondGoods)){

@@ -66,6 +66,9 @@
 		<action name="taskAllocationList" class="com.lsp.logistics.web.action.substation.SubstationAction" method="taskAllocationList">
 			<result name="taskAllocationList">/WEB-INF/jsp/substation/TaskAllocationList.jsp</result>
 		</action>
+		<action name="task_find" class="com.lsp.logistics.web.action.substation.SubstationAction" method="task_find">
+			<result name="task_find">/WEB-INF/jsp/substation/TaskAllocationList.jsp</result>
+		</action>
 		<action name="openTaskAllocation" class="com.lsp.logistics.web.action.substation.SubstationAction" method="openTaskAllocation">
 			<result name="openTaskAllocation">/WEB-INF/jsp/substation/TaskAllocation.jsp</result>
 		</action>
@@ -76,6 +79,9 @@
 		</action>
 		<action name="receiptEnterList" class="com.lsp.logistics.web.action.substation.SubstationAction" method="receiptEnterList">
 			<result name="receiptEnterList">/WEB-INF/jsp/substation/ReceiptEnterList.jsp</result>
+		</action>
+		<action name="receipt_task_find" class="com.lsp.logistics.web.action.substation.SubstationAction" method="receipt_task_find">
+			<result name="receipt_task_find">/WEB-INF/jsp/substation/ReceiptEnterList.jsp</result>
 		</action>
 		<action name="receiptEnter" class="com.lsp.logistics.web.action.substation.SubstationAction" method="receiptEnter">
 			<result name="receiptEnter">/WEB-INF/jsp/substation/ReceiptEnter.jsp</result>

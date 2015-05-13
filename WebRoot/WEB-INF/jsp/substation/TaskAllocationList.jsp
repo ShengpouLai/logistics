@@ -15,7 +15,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </form>
 
 <div class="pageHeader">
-	<form id="pageForm" onsubmit="return navTabSearch(this);" action="substation_find.action" method="post">
+	<form id="pageForm" onsubmit="return navTabSearch(this);" action="task_find.action" method="post">
 	
 	<div class="searchBar">
 		<table class="searchContent">

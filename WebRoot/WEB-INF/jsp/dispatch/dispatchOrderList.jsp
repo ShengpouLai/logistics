@@ -75,21 +75,6 @@
 				onclick="oqa()" width="800" height="370"><span>调度</span>
 			</a>
 			</li>
-			<li><a class="delete"
-				href="order_delete.action?costomer.id={costomer_id}"
-				target="ajaxTodo" title="确定要删除吗?"><span>删除</span>
-			</a>
-			</li>
-			<li><a class="edit"
-				href="order_findById.action?costomer.id={costomer_id}"
-				target="dialog" width="800" height="370"><span>修改</span>
-			</a>
-			</li>
-			<li class="line">line</li>
-			<li><a class="icon" href="demo/common/dwz-team.xls"
-				target="dwzExport" targetType="navTab" title="实要导出这些记录吗?"><span>导出EXCEL</span>
-			</a>
-			</li>
 		</ul>
 	</div>
 	<div rel="asdew" id="asdew">

@@ -234,4 +234,15 @@ public class TaskOrderServiceImpl implements TaskOrderServiceIfac {
 		return this.taskOrderDao.findTaskOrder(taskOrderId, taskState, substationId, costomerName, costomerPhone, orderDeliverDate);
 	}
 
+	@Override
+	public List<TaskOrderEntity> findTask(String substationName) {
+		return this.taskOrderDao.findTask(substationName);
+	}
+
+	@Override
+	public List<TaskOrderEntity> receipt_task_find(String taskOrderId,
+			String deliveryStaffName) {
+		return this.taskOrderDao.receipt_task_find(taskOrderId, deliveryStaffName);
+	}
+
 }

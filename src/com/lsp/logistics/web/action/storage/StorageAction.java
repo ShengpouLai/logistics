@@ -120,15 +120,24 @@ public class StorageAction extends ActionSupport {
 		this.storageService = storageService;
 	}
 
+	/*
+	 * 查询出所有库房
+	 */
 	public String findAllStorage(){
 		storageList = this.storageService.findAllStorage();
 		return "findAllStorage";
 	}
 	
+	/*
+	 * 跳转新增库房页面
+	 */
 	public String openAddStoragePage(){
 		return "openAddStoragePage";
 	}
 	
+	/*
+	 * 新增库房
+	 */
 	public String addStorage(){
 		data = new HashMap<String, Object>();
 		if(this.storageService.saveStorage(storage)){
@@ -146,16 +155,21 @@ public class StorageAction extends ActionSupport {
 		return "add";
 	}
 	
+	/*
+	 * 跳转设置库房存储量页面
+	 */
 	public String openAddStorageReservePage(){
 		storageList = this.storageService.findAllStorage();
 		firstGoodsList = this.firstGoodsService.findAllFirstGoods();
 		return "openAddStorageReservePage";
 	}
 	
+	/*
+	 * 设置库房存储量
+	 */
 	public String addStorageReserve(){
 		data = new HashMap<String, Object>();
 		if(this.storageReserveService.saveStorageReserve(storageReserve)){
-			
 			this.goodsNumberService.saveGoodsNumber(storageReserve.getGoods(), storageReserve.getStorage());
 			data.put("statusCode",200);
 			data.put("message", "操作成功");
@@ -171,11 +185,17 @@ public class StorageAction extends ActionSupport {
 		return "addStorageReserve";
 	}
 	
+	/*
+	 * 查看库房存储量
+	 */
 	public String findStorageReserver(){
 		storageReserveList = this.storageReserveService.findStorageReserveByStorageId(storageId);
 		return "findStorageReserver";
 	}
 	
+	/*
+	 * 删除库房
+	 */
 	public String deleteStorage(){
 		data = new HashMap<String, Object>();
 		if(this.storageService.deleteStorage(storage.getId())){
@@ -193,11 +213,17 @@ public class StorageAction extends ActionSupport {
 		return "delete";
 	}
 	
+	/*
+	 * 通过Id查询库房
+	 */
 	public String findById(){
 		storage = this.storageService.findById(storage.getId());
 		return "findById";
 	}
 	
+	/*
+	 * 修改库房信息
+	 */
 	public String updateStorage(){
 		data = new HashMap<String, Object>();
 		if(this.storageService.updateStorage(storage)){
@@ -215,6 +241,9 @@ public class StorageAction extends ActionSupport {
 		return "update";
 	}
 	
+	/*
+	 * 条件查询库房
+	 */
 	public String findStorage(){
 		storageList = this.storageService.findStorage(storageName);
 		if(storageList.size() != 0){
@@ -228,6 +257,9 @@ public class StorageAction extends ActionSupport {
 		}
 	}
 	
+	/*
+	 * 查看库存量
+	 */
 	public String lookGoodsNumber(){
 			goodsNumberList = goodsNumberService.lookGoodsNumber(storage.getId());
 		return "lookGoodsNumber";

@@ -211,6 +211,9 @@ public class SubstationAction extends ActionSupport {
 		this.substationService = substationService;
 	}
 
+	/*
+	 * 查询所有分站
+	 */
 	public String findAllSubstation(){
 		try{
 			substationList = this.substationService.findAllSubstation();
@@ -221,13 +224,18 @@ public class SubstationAction extends ActionSupport {
 		return "findAllSubstation";
 	}
 	
+	/*
+	 * 跳转新增分站页面
+	 */
 	public String openAddSubstationPage(){
 		storageList = this.storageService.findAllStorage();
 		return "openAddSubstationPage";
 	}
 	
+	/*
+	 * 新增分站
+	 */
 	public String addSubstation(){
-		
 		try{
 			data = new HashMap<String, Object>();
 			if(this.substationService.saveSubstation(sub)){
@@ -249,6 +257,9 @@ public class SubstationAction extends ActionSupport {
 		return "addSubstation";
 	}
 	
+	/*
+	 * 删除分站
+	 */
 	public String deleteSubstation(){
 		data = new HashMap<String, Object>();
 		if(this.substationService.deleteSubstation(sub.getId())){
@@ -266,12 +277,18 @@ public class SubstationAction extends ActionSupport {
 		return "deleteSubstation";
 	}
 	
+	/*
+	 * 通过Id查询分站
+	 */
 	public String findSubstationById(){
 		sub = this.substationService.findSubstationById(sub.getId());
 		storageList = this.storageService.findAllStorage();
 		return "findSubstationById";
 	}
 	
+	/*
+	 * 修改分站信息
+	 */
 	public String updateSubstation(){
 		data = new HashMap<String, Object>();
 		if(this.substationService.updateSubstation(sub)){
@@ -289,6 +306,9 @@ public class SubstationAction extends ActionSupport {
 		return "updateSubstation";
 	}
 	
+	/*
+	 * 查询分站
+	 */
 	public String findSubstation(){
 		substationList = this.substationService.findSubstation(sub.getSubstationName());
 		if(substationList.size() != 0){
@@ -302,11 +322,17 @@ public class SubstationAction extends ActionSupport {
 		}
 	}
 	
+	/*
+	 * 查询出等待分配的任务单
+	 */
 	public String taskAllocationList(){
 		taskOrderList = this.taskOrderService.findToAllocation();
 		return "taskAllocationList";
 	}
 	
+	/*
+	 * 跳转任务单分配页面
+	 */
 	public String openTaskAllocation(){
 		TaskOrderEntity taskOrder1 = this.taskOrderService.findById(taskOrderId);
 		deliveryStaffList = this.deliveryStaffService.findBySubstation(taskOrder1.getSubstation().getId());
@@ -317,6 +343,17 @@ public class SubstationAction extends ActionSupport {
 		return "openTaskAllocation";
 	}
 	
+	/*
+	 * 任务分配时通过分站名称查询任务单
+	 */
+	public String task_find(){
+		taskOrderList = this.taskOrderService.findTask(sub.getSubstationName());
+		return "task_find";
+	}
+	
+	/*
+	 * 任务分配
+	 */
 	public String taskAllocation(){
 		data = new HashMap<String, Object>();
 		if(this.taskOrderService.taskAllocation(deliveryStaffId)){
@@ -334,16 +371,25 @@ public class SubstationAction extends ActionSupport {
 		return "taskAllocation";
 	}
 	
+	/*
+	 * 跳转回执录入列表
+	 */
 	public String receiptEnterList(){
 		taskOrderList = this.taskOrderService.findReceiptEnter();
 		return "receiptEnterList";
 	}
 	
+	/*
+	 * 跳转回执录入页面
+	 */
 	public String receiptEnter(){
 		taskOrder = this.taskOrderService.findById(taskOrderId);
 		return "receiptEnter";
 	}
 	
+	/*
+	 * 回执录入
+	 */
 	public String receipt_enter(){
 		data = new HashMap<String, Object>();
 		if(this.receiptService.saveReceipt(receipt, taskOrderId)){
@@ -361,16 +407,29 @@ public class SubstationAction extends ActionSupport {
 		return "receipt_enter";
 	}
 	
+	/*
+	 * 跳转任务单列表
+	 */
 	public String taskOrderList(){
 		taskOrderList = this.taskOrderService.findAllTaskOrder();
 		substationList = this.substationService.findAllSubstation();
 		return "taskOrderList";
 	}
 	
+	/*
+	 * 条件查询任务单
+	 */
 	public String taskOrder_find(){
-//		System.out.println(taskId +","+ taskState+","+  subId +","+  costomerName+","+  costomerPhone+","+  orderDeliverDate);
 		taskOrderList = this.taskOrderService.findTaskOrder(taskId, taskState, subId, costomerName, costomerPhone, orderDeliverDate);
 		return "taskOrder_find";
+	}
+	
+	/*
+	 * 回执录入时的条件查询任务单
+	 */
+	public String receipt_task_find(){
+		taskOrderList = this.taskOrderService.receipt_task_find(taskOrder.getTaskOrderId(), taskOrder.getDeliveryStaff().getDeliveryStaffName());
+		return "receipt_task_find";
 	}
 	
 }

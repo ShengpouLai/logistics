@@ -42,11 +42,17 @@ public class FirstGoodsAction extends ActionSupport {
 		this.firstGoodsService = firstGoodsService;
 	}
 	
+	/*
+	 * 跳转商品一级分类列表
+	 */
 	public String findAllFirstGoods(){
 		firstGoodsList = this.firstGoodsService.findAllFirstGoods();
 		return "firstGoodsFindAll";
 	}
 	
+	/*
+	 * 保存商品一级分类
+	 */
 	public String addFirstGoods(){
 		data = new HashMap<String, Object>();
 		if(this.firstGoodsService.saveFirstGoods(firstGoods)){
@@ -64,6 +70,9 @@ public class FirstGoodsAction extends ActionSupport {
 		return "add";
 	}
 	
+	/*
+	 * 删除商品一级分类
+	 */
 	public String deleteFirstGoods(){
 		data = new HashMap<String, Object>();
 		if(this.firstGoodsService.deleteFirstGoods(firstGoods.getId())){
@@ -81,11 +90,17 @@ public class FirstGoodsAction extends ActionSupport {
 		return "delete";
 	}
 	
+	/*
+	 * 跳转修改商品一级分类页面
+	 */
 	public String findFirstGoodsById(){
 		firstGoods = this.firstGoodsService.findFirstGoodsById(firstGoods.getId());
 		return "findById";
 	}
 	
+	/*
+	 * 修改商品一级分类
+	 */
 	public String updateFirstGoods(){
 		data = new HashMap<String, Object>();
 		if(this.firstGoodsService.updateFirstGoods(firstGoods)){
@@ -100,9 +115,6 @@ public class FirstGoodsAction extends ActionSupport {
 			data.put("statusCode", "300");
 			data.put("message", "修改失败");
 		}
-		
 		return "update";
 	}
-	
-
 }

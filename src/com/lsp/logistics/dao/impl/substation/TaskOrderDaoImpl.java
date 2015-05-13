@@ -75,4 +75,34 @@ public class TaskOrderDaoImpl extends BaseDaoImpl<TaskOrderEntity> implements Ta
 		}
 	}
 
+	@Override
+	public List<TaskOrderEntity> findTask(String substationName) {
+		String hql = "from TaskOrderEntity as t where ";
+		if(substationName.length() > 0){
+			hql = hql + "t.substation.substationName = '" + substationName + "'";
+			return getHibernateTemplate().find(hql);
+		}
+		else{
+			return new ArrayList<TaskOrderEntity>();
+		}
+	}
+
+	@Override
+	public List<TaskOrderEntity> receipt_task_find(String taskOrderId,
+			String deliveryStaffName) {
+		if(taskOrderId.length() == 0 && deliveryStaffName.length() == 0){
+			return new ArrayList<TaskOrderEntity>();
+		} 
+		else{
+			String hql = "from TaskOrderEntity as t where ";
+			if(taskOrderId.length() > 0){
+				hql = hql + " t.taskOrderId = '" + taskOrderId + "' and ";
+			}
+			if(deliveryStaffName.length() > 0){
+				hql = hql + " t.deliveryStaff.deliveryStaffName = '" + deliveryStaffName + "' and ";
+			}
+			return getHibernateTemplate().find(hql);
+		}
+	}
+
 }

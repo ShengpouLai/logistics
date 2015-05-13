@@ -50,15 +50,24 @@ public class SupplierAction extends ActionSupport {
 		this.supplierService = supplierService;
 	}
 	
+	/*
+	 * 查询所有供应商
+	 */
 	public String findAllSuplier(){
 		supplierList = this.supplierService.findAllSupplier();
 		return "findAll";
 	}
 	
+	/*
+	 * 跳转增加供应商页面
+	 */
 	public String openAddPage(){
 		return "openAddPage";
 	}
 	
+	/*
+	 * 增加供应商
+	 */
 	public String addSupplier(){
 		data = new HashMap<String, Object>();
 		if(this.supplierService.saveSupplier(supplier)){
@@ -76,6 +85,9 @@ public class SupplierAction extends ActionSupport {
 		return "add";
 	}
 	
+	/*
+	 * 删除供应商
+	 */
 	public String deleteSupplier(){
 		data = new HashMap<String, Object>();
 		if(this.supplierService.deleteSupplier(supplier.getId())){
@@ -93,11 +105,17 @@ public class SupplierAction extends ActionSupport {
 		return "delete";
 	}
 	
+	/*
+	 * 跳转修改供应商页面
+	 */
 	public String findSupplierById(){
 		supplier = this.supplierService.findById(supplier.getId());
 		return "findById";
 	}
 	
+	/*
+	 * 修改供应商信息
+	 */
 	public String updateSupplier(){
 		data = new HashMap<String, Object>();
 		if(this.supplierService.updateSupplier(supplier)){
@@ -115,6 +133,9 @@ public class SupplierAction extends ActionSupport {
 		return "update";
 	}
 	
+	/*
+	 * 条件查询供应商
+	 */
 	public String findSupplier(){
 		supplierList = this.supplierService.findSupplier(supplierName);
 		if(supplierList.size() > 0){
@@ -127,7 +148,5 @@ public class SupplierAction extends ActionSupport {
 			return "error";
 		}
 	}
-	
-	
 
 }

@@ -17,21 +17,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </form>
 
 <div class="pageHeader">
-	<form id="pageForm" onsubmit="return navTabSearch(this);" action="costomer_findCostomer.action" method="post">
+	<form id="pageForm" onsubmit="return navTabSearch(this);" action="receipt_task_find.action" method="post">
 	
 	<div class="searchBar">
 		<table class="searchContent">
 			<tr>
 				<td>
-					客户姓名：<input type="text" name="costomerName" size="30" />
+					任务单号：<input type="text" name="taskOrder.taskOrderId" size="30" />
 				</td>
 				<td>
-					身份证号：<input type="text" name="costomerId" class="digits" minlength="18" maxlength="18" />
+					配送员姓名：<input type="text" name="taskOrder.deliveryStaff.deliveryStaffName" size="30"/>
 				</td>
-				<td>
-					电话号码：<input type="text" name="costomerMobailPhone" class="phone"/>
-				</td>
-				
 			</tr>
 		</table>
 		<div class="subBar">
