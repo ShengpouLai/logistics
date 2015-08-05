@@ -54,11 +54,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<table class="table" width="100%" layoutH="138">
 		<thead>
 			<tr>
-				<th width="120">客户姓名</th>
-				<th width="250">身份证号码</th>
-				<th width="150">工作单位</th>
-				<th width="150">座机</th>
-				<th width="150">移动电话</th>
+				<th width="60">客户姓名</th>
+				<th width="140">身份证号码</th>
+				<th width="170">工作单位</th>
+				<th width="90">座机</th>
+				<th width="100">移动电话</th>
 				<th>联系地址</th>
 				<th width="80">邮编</th>
 				<th width="80">email</th>

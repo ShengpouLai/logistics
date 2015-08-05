@@ -8,7 +8,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <div class="pageContent">
 	<div>
-	<table class="table" width="100%" layoutH="138">
+	<table class="table" width="100%" layoutH="48">
 		<thead>
 			<tr>
 				<th width="100">库房名称</th>

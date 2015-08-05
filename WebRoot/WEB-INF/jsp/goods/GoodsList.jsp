@@ -31,7 +31,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="subBar">
 			<ul>
 				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">检索</button></div></div></li>
-				<li><a class="button" href="demo_page6.html" target="dialog" mask="true" title="查询框"><span>高级检索</span></a></li>
 			</ul>
 		</div>
 	</div>
@@ -42,7 +41,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<ul class="toolBar">
 			<li><a class="add" href="goodsAdd.action" target="dialog" width="730" height="560"><span>添加</span></a></li>
 			<li><a class="delete" href="goods_delete.action?goods.id={goods_id}" target="ajaxTodo" title="确定要删除吗?"><span>删除</span></a></li>
-			<li><a class="edit" href="goods_findById.action?goods.id={goods_id}" target="dialog" width="730" height="520"><span>修改</span></a></li>
+			<li><a class="edit" href="goods_findById.action?goods.id={goods_id}" target="dialog" width="730" height="560"><span>修改</span></a></li>
 			<li class="line">line</li>
 			<li><a class="icon" href="demo/common/dwz-team.xls" target="dwzExport" targetType="navTab" title="实要导出这些记录吗?"><span>导出EXCEL</span></a></li>
 		</ul>

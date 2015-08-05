@@ -18,5 +18,11 @@
 				<param name="root">data</param>
 			</result>
 		</action>
+		<action name="order_find_dispatchOrder" class="com.lsp.logistics.web.action.order.OrderAction" method="order_find_dispatchOrder">
+			<result name="order_find_dispatchOrder">/WEB-INF/jsp/dispatch/dispatchOrderList.jsp</result>
+			<result name="errorFindOrder" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
 	</package>
 </struts>

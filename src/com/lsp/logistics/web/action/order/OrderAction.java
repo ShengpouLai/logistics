@@ -684,4 +684,20 @@ public class OrderAction extends ActionSupport {
 		
 		return "goods_return";
 	}
+	
+	/*
+	 * 订单调度时的条件查询
+	 */
+	public String order_find_dispatchOrder(){
+		orderList = orderService.findOrder(orderId, "0", "订单已确认，等待调度。", costomerName, costomerMobailPhone, orderBeginDate, orderEndDate);
+		if(orderList.size() == 0){
+			data = new HashMap<String, Object>();
+			data.put("statusCode", "300");
+			data.put("message", "查询失败");
+			return "errorFindOrder";
+		}
+		else{
+			return "order_find_dispatchOrder";
+		}
+	}
 }

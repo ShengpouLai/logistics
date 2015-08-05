@@ -116,7 +116,7 @@
 				<dt>商品备注：</dt>
 				<dd>
 					<input value="${goods.goodsRemark }" name="goods.goodsRemark"
-						class="required" type="text" size="30" />
+						 type="text" size="30" />
 				</dd>
 			</dl>
 			<input value="${goods.id }" name="goods.id" style="visibility:hidden">

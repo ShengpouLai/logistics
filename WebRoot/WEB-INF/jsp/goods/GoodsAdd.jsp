@@ -104,11 +104,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<dl>
 				<dt>商品备注：</dt>
 				<dd>
-				<input name="goods.goodsRemark" class="required" type="text" size="30"/>
+				<input name="goods.goodsRemark" type="text" size="30"/>
 				</dd>
 			</dl>
 			
-			<input type="text" value="1" name="goods.storage.id" style="visibility: hidden;">
 			<input name="goods.goodsState" value="1" style="visibility: hidden;" />
 			
 		</div>

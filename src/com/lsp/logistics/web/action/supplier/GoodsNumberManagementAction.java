@@ -136,7 +136,7 @@ public class GoodsNumberManagementAction extends ActionSupport{
 		//保存购货入库单
 		if(this.buyGoodsOrderService.saveBuyGoodsOrder(buyGoodsOrder)){
 			this.goodsService.buyGoodsState(buyGoodsOrder.getGoods().getId());
-			
+//			this.goodsNumberService.updateGoodsNumber(buyGoodsOrder.getGoods().getId(), buyGoodsOrder.getBuyGoodsNumber());
 			data.put("statusCode",200);
 			data.put("message", "进货成功");
 			data.put("navTabId", "buyGoodsList");

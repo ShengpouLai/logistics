@@ -23,49 +23,36 @@
 </form>
 
 <div class="pageHeader">
-	<form id="pageForm" onsubmit="return navTabSearch(this);"
-		action="order_find.action" method="post">
-
-		<div class="searchBar">
-			<table class="searchContent">
-				<tr>
-					<td>订单号 &nbsp;&nbsp;&nbsp;：<input type="text" name="orderId" />
-					</td>
-					<td>订单类型：<select name="orderType" style="width: 15">
-							<option value="">全部</option>
-							<option value="0">新订</option>
-							<option value="1">异地收费</option>
-							<option value="2">换货</option>
-							<option value="3">退货</option>
-							<option value="4">退订</option>
-					</select></td>
-					<td>订单状态：<select name="orderState">
-							<option value=""></option>
-							<option value="0">已完成</option>
-							<option value="1">订单已确认，等待调度。</option>
-					</select></td>
-					
-				</tr>
-				<tr>
-					<td>开始日期：<input type="text" name="orderBeginDate" class="date"
-						readonly="true" /></td>
-					<td>结束日期：<input type="text" name="orderEndDate" class="date"
-						readonly="true" /></td>
-					<td>客户姓名：<input type="text" name="costomerName" size="15" /></td>
-					<td>联系电话：<input type="text" name="costomerMobailPhone" /></td>
-				</tr>
-			</table>
-			<div class="subBar">
-				<ul>
-					<li><div class="buttonActive">
-							<div class="buttonContent">
-								<button type="submit">检索</button>
-							</div>
-						</div>
-					</li>
-				</ul>
-			</div>
+	<form id="pageForm" onsubmit="return navTabSearch(this);" action="order_find_dispatchOrder.action" method="post">
+	
+	<div class="searchBar">
+		<table class="searchContent">
+			<tr>
+				<td>
+					订单号 &nbsp;&nbsp;&nbsp;：<input type="text" name="orderId"/>
+				</td>
+				<td>
+					客户姓名：<input type="text" name="costomerName" size="15"/>
+				</td>
+				<td>
+					联系电话：<input type="text" name="costomerMobailPhone"/>
+				</td>
+			</tr>
+			<tr>
+				<td>
+				开始日期：<input type="text" name="orderBeginDate" class="date" readonly="true"/>
+				</td>
+				<td>
+				结束日期：<input type="text" name="orderEndDate" class="date" readonly="true"/>
+				</td>
+			</tr>
+		</table>
+		<div class="subBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">检索</button></div></div></li>
+			</ul>
 		</div>
+	</div>
 	</form>
 </div>
 <div class="pageContent">

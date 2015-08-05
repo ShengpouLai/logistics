@@ -37,7 +37,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<ul class="toolBar">
 			<li><a class="add" href="supplierAdd.action" target="dialog" width="720" height="400"><span>添加</span></a></li>
 			<li><a class="delete" href="supplier_delete.action?supplier.id={supplier_id}" target="ajaxTodo" title="确定要删除吗?"><span>删除</span></a></li>
-			<li><a class="edit" href="supplier_findById.action?supplier.id={supplier_id}" target="dialog" width="680" height="380"><span>修改</span></a></li>
+			<li><a class="edit" href="supplier_findById.action?supplier.id={supplier_id}" target="dialog" width="720" height="425"><span>修改</span></a></li>
 			<li class="line">line</li>
 		</ul>
 	</div>

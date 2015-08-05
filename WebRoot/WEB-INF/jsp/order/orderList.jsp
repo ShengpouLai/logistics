@@ -28,11 +28,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<td>
 					订单类型：<select name="orderType" style="width: 15">
 							 	<option value="">全部</option>
-							 	<option value="0">新订</option>
-							 	<option value="1">异地收费</option>
-							 	<option value="2">换货</option>
-							 	<option value="3">退货</option>
-							 	<option value="4">退订</option>
+							 	<option value="0">普通订单</option>
+							 	<option value="1">退订订单</option>
 							 </select>
 				</td>
 				<td>
@@ -42,6 +39,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<option value="订单已确认，等待调度。">订单已确认，等待调度。</option>	
 								<option value="订单已调度，等待中心库房出库。">订单已调度，等待中心库房出库。</option>
 								<option value="订单已从中心库房出库，运输公司配送中。">订单已从中心库房出库，运输公司配送中。</option>
+								<option value="订单已到达分站库房，等待分配。">订单已到达分站库房，等待分配。</option>
+								<option value="订单已分配，等待配送员配送。">订单已分配，等待配送员配送。</option>
+								<option value="配送员已领货，请耐心等待配送。">配送员已领货，请耐心等待配送。</option>
 							 </select>
 				</td>
 			</tr>

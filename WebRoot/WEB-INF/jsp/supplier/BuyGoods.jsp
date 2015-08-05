@@ -48,7 +48,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<dl>
 				<dt>日期：</dt>
 				<dd>
-				<input name="buyGoodsOrder.buyGoodsDate" class="required" type="text" size="30"/>
+				<input name="buyGoodsOrder.buyGoodsDate" class="date" type="text" size="30" readonly="true"/>
 				</dd>
 			</dl>
 			<input name="buyGoodsOrder.buyGoodsOrderState" value="1" style="visibility: hidden;" />

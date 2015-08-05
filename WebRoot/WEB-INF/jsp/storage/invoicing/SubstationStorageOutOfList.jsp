@@ -27,7 +27,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="subBar">
 			<ul>
 				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">检索</button></div></div></li>
-				<li><a class="button" href="demo_page6.html" target="dialog" mask="true" title="查询框"><span>高级检索</span></a></li>
 			</ul>
 		</div>
 	</div>
@@ -37,8 +36,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div class="panelBar">
 		<ul class="toolBar">
 			<li><a class="add" href="substationStorageOutOf.action?taskOrderId={taskOrder_id}" target="ajaxTodo"><span>配送员领货出库</span></a></li>
-			<li><a class="edit" href="openOrderDetail.action?substationCheckGoodsOrderId={substationCheckGoodsOrder_id}" target="dialog"><span>入库单修改</span></a></li>
-		</ul>
+			<!-- <li><a class="edit" href="openOrderDetail.action?substationCheckGoodsOrderId={substationCheckGoodsOrder_id}" target="dialog"><span>入库单修改</span></a></li>
+-->		</ul>
 	</div>
 	<table class="table" width="100%" layoutH="138">
 		<thead>

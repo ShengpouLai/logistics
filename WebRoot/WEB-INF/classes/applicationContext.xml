@@ -263,6 +263,8 @@
 	<bean id="orderReturnService" class="com.lsp.logistics.service.impl.order.OrderReturnServiceImpl">
 		<property name="orderReturnDao" ref="orderReturnDao"/>
 		<property name="orderDao" ref="orderDao"/>
+		<property name="goodsNumberDao" ref="goodsNumberDao"/>
+		<property name="orderDetailDao" ref="orderDetailDao"/>
 	</bean>
 	<bean id="goodsReturnDetailService" class="com.lsp.logistics.service.impl.order.GoodsReturnDetailServiceImpl">
 		<property name="goodsReturnDetailDao" ref="goodsReturnDetailDao"/>

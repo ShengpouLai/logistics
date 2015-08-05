@@ -17,26 +17,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<form id="pageForm" onsubmit="return navTabSearch(this);" action="costomer_findCostomer.action" method="post">
 	
 	<div class="searchBar">
-		<table class="searchContent">
-			<tr>
-				<td>
-					客户姓名：<input type="text" name="costomerName" size="30" />
-				</td>
-				<td>
-					身份证号：<input type="text" name="costomerId" class="digits" minlength="18" maxlength="18" />
-				</td>
-				<td>
-					电话号码：<input type="text" name="costomerMobailPhone" class="phone"/>
-				</td>
-				
-			</tr>
-		</table>
-		<div class="subBar">
-			<ul>
-				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">检索</button></div></div></li>
-				<li><a class="button" href="demo_page6.html" target="dialog" mask="true" title="查询框"><span>高级检索</span></a></li>
-			</ul>
-		</div>
 	</div>
 	</form>
 </div>
@@ -46,7 +26,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<li><a class="add" href="openCSPutIn.action?buyGoodsOrder.id={buyGoodsOrder_id}" target="dialog" width="800" height="370"><span>中心库房入库</span></a></li>
 		</ul>
 	</div>
-	<table class="table" width="100%" layoutH="138">
+	<table class="table" width="100%" layoutH="88">
 		<thead>
 			<tr>
 				<th width="120">购货入库单号</th>

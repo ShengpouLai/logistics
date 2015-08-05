@@ -65,7 +65,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<dl>
 				<dt>备注：</dt>
 				<dd>
-				<input name="supplier.supplierRemark" class="required" type="text" size="30"/>
+				<input name="supplier.supplierRemark"  type="text" size="30"/>
 				</dd>
 			</dl>
 			

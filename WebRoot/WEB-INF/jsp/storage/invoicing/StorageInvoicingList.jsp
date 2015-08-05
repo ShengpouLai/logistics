@@ -99,10 +99,6 @@ $(document).ready(function(){
 <div class="pageContent">
 	<div class="panelBar">
 		<ul class="toolBar">
-			<li><a class="add" href="orderAdd.action" target="navTab" width="800" height="370"><span>添加</span></a></li>
-			<li><a class="delete" href="orderReturn.action?order.id={order_id}" target="dialog"><span>申请退订</span></a></li>
-			<!-- <li><a class="delete" href="goodsReturn.action?order.id={order_id}" target="navTab" rel="returnGoods"><span>申请退货</span></a></li> -->
-			<li class="line">line</li>
 			<li><a class="icon" href="demo/common/dwz-team.xls" target="dwzExport" targetType="navTab" title="实要导出这些记录吗?"><span>导出EXCEL</span></a></li>
 		</ul>
 	</div>
